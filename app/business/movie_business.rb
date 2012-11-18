@@ -120,7 +120,7 @@ class MovieBusiness < ApplicationBusiness
                     :url => image['url']
                 )
               end if cast['images'] and member.movie_images.empty?
-            end
+            end if credits['cast']
             credits['crew'].each do |crew|
               credit = movie.movie_credits.create(
                   :department => crew['department'],
@@ -135,7 +135,7 @@ class MovieBusiness < ApplicationBusiness
                     :url => image['url']
                 )
               end if crew['images'] and member.movie_images.empty?
-            end
+            end if credits['crew']
           end
 
         end
@@ -148,5 +148,5 @@ class MovieBusiness < ApplicationBusiness
   end
 end
 
-#o = MovieBusiness.new
-#o.scan('/data/Video/Movies')
+o = MovieBusiness.new
+o.scan('/data/Video/Movies')

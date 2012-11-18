@@ -15,7 +15,7 @@
 #Value is either 1 (1 image) or 2 (all images – default), for example, when automatically downloading images you might only want to return the first result so the user doesn’t have to provide input, whereas with a manual download you might want the user to see all the options.
 
 class FanartService
-  HOST = 'fanart.tv'
+  HOST = 'api.fanart.tv'
   PORT = 80
   API_KEY = 'e4967f4f625098ecf0666446ca70f7b5'
 

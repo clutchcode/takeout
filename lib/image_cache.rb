@@ -2,8 +2,10 @@ require 'net/http'
 require 'fileutils'
 
 class ImageCache
+  CACHE_DIR = '/var/tmp/takeout/images'
+
   def initialize
-    @cache_dir = "/tmp/images"
+    @cache_dir = CACHE_DIR
   end
 
   def exists?(url)
