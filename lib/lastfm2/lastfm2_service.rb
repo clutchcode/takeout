@@ -1,14 +1,11 @@
-#require 'api_engine'
-
 class Lastfm2Service
   HOST = 'ws.audioscrobbler.com'
   PORT = 80
-  API_KEY = '7848c7336a28cc4464c4993ac7f1455e'
 
   def initialize
-    @engine = ApiEngine.new('lastfm', HOST, PORT)
+    @engine = ApiEngine.new('lastfm2', HOST, PORT)
     @engine.json = true
-    @api_key = API_KEY
+    @api_key = ApiKey.get_key('lastfm2')
   end
 
   def artist_info(opts)
@@ -37,7 +34,3 @@ class Lastfm2Service
     @engine.get('/2.0/', params)
   end
 end
-
-#service = Lastfm2Service.new
-#info = service.artist_info(:artist => "Gary Numan")
-#p info

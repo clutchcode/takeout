@@ -1,28 +1,11 @@
-# Artist API: http://fanart.tv/webservice/artist/apikey/musicbrainz_mbid/format/type/sort/limit/
-# Album API: http://fanart.tv/webservice/album/apikey/musicbrainz_release-group_mbid/format/type/sort/limit/
-# Record Label API: http://fanart.tv/webservice/label/apikey/musicbrainz_label_mbid/format/type/sort/limit/
-#format
-#Returns the results in the requested format
-#json (default) / xml / php (returns a php serialized object)
-#type
-#Returns the requested image types
-#all (default) / cdart / artistbackground / albumcover / musiclogo / artistthumbs
-#sort
-#1 – Sorted by most popular image then newest(default)
-#2 – Sorted by newest uploaded image
-#3 – Sorted by oldest uploaded image
-#limit
-#Value is either 1 (1 image) or 2 (all images – default), for example, when automatically downloading images you might only want to return the first result so the user doesn’t have to provide input, whereas with a manual download you might want the user to see all the options.
-
 class FanartService
   HOST = 'api.fanart.tv'
   PORT = 80
-  API_KEY = 'e4967f4f625098ecf0666446ca70f7b5'
 
   def initialize
     @engine = ApiEngine.new('fanart', HOST, PORT)
     @engine.json = true
-    @api_key = API_KEY
+    @api_key = ApiKey.get_key('fanart')
   end
 
   def artist_backdrops(mbid)

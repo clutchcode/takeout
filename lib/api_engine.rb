@@ -22,7 +22,6 @@ class ApiEngine
       end
     end
 
-    #puts "#{@name}: #{uri}"
     content = @cache.get("http://#{@host}:#{@port}#{uri}", 180.days)
 
     if @json

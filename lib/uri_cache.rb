@@ -1,10 +1,8 @@
 require 'net/http'
 
 class UriCache
-  CACHE_DIR = '/var/tmp/takeout/cache'
-
   def initialize
-    @cache = ActiveSupport::Cache.lookup_store(:file_store, CACHE_DIR)
+    @cache = ActiveSupport::Cache.lookup_store(:file_store, Takeout::Application.config.uri_cache_dir)
   end
 
   def get(url, expires = 24.hours)

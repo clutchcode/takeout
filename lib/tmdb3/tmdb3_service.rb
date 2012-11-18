@@ -1,6 +1,3 @@
-require 'api_key'
-require 'api_engine'
-
 class Tmdb3Service
   HOST = 'api.themoviedb.org'
   PORT = 80

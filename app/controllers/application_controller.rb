@@ -49,11 +49,9 @@ class ApplicationController < ActionController::Base
     action_name
   end
 
-  CACHE_DIR = '/var/tmp/takeout/cache'
-
   # returns [:image => data, :type => content-type]
   def embedded_music_cover(music_song)
-    @cache = ActiveSupport::Cache.lookup_store(:file_store, CACHE_DIR) unless @cache
+    @cache = ActiveSupport::Cache.lookup_store(:file_store, Takeout::Application.config.image_cache_dir) unless @cache
 
     return nil unless music_song.has_cover?
     key = "cover:#{music_song.file_uri}".gsub(/[^a-zA-z0-9]/, '_')

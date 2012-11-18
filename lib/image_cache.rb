@@ -2,10 +2,8 @@ require 'net/http'
 require 'fileutils'
 
 class ImageCache
-  CACHE_DIR = '/var/tmp/takeout/images'
-
   def initialize
-    @cache_dir = CACHE_DIR
+    @cache_dir = Takeout::Application.config.image_cache_dir
   end
 
   def exists?(url)
@@ -49,10 +47,3 @@ class ImageCache
     "#{@cache_dir}/#{path}".gsub(/\/+/, '/')
   end
 end
-
-#ic = ImageCache.new
-#p ic.fetch('http://www.google.com/')
-#p ic.fetch('http://www.google.com/')
-#p ic.fetch('file:///tmp/map.jpg')
-#p ic.fetch('file:///tmp/map.jpg')
-
