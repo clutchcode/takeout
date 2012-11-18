@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: MyString
+  size: MyString
+  aspect_ratio: 1.5
+  width: 1
+  height: 1
+  language: MyString
+  sort_order: 1
+  movie: 
+  movie_collection: 
+
+two:
+  url: MyString
+  size: MyString
+  aspect_ratio: 1.5
+  width: 1
+  height: 1
+  language: MyString
+  sort_order: 1
+  movie: 
+  movie_collection: 

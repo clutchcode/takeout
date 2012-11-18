@@ -1,0 +1,31 @@
+<h1>Listing music_credits</h1>
+
+<table>
+  <tr>
+    <th>Credit</th>
+    <th>Department</th>
+    <th>Job</th>
+    <th>Music album</th>
+    <th>Music member</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @music_credits.each do |music_credit| %>
+  <tr>
+    <td><%= music_credit.credit %></td>
+    <td><%= music_credit.department %></td>
+    <td><%= music_credit.job %></td>
+    <td><%= music_credit.music_album %></td>
+    <td><%= music_credit.music_member %></td>
+    <td><%= link_to 'Show', music_credit %></td>
+    <td><%= link_to 'Edit', edit_music_credit_path(music_credit) %></td>
+    <td><%= link_to 'Destroy', music_credit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Music credit', new_music_credit_path %>

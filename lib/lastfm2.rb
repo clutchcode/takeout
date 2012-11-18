@@ -1,0 +1,1 @@
+require 'lastfm2/lastfm2_service'

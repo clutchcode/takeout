@@ -1,0 +1,2 @@
+module MusicSongsHelper
+end

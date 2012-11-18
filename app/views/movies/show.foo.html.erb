@@ -1,0 +1,64 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <b>Alt title:</b>
+  <%= @movie.alt_title %>
+</p>
+
+<p>
+  <b>Sort title:</b>
+  <%= @movie.sort_title %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @movie.url %>
+</p>
+
+<p>
+  <b>Rating:</b>
+  <%= @movie.rating %>
+</p>
+
+<p>
+  <b>Runtime:</b>
+  <%= @movie.runtime %>
+</p>
+
+<p>
+  <b>Released:</b>
+  <%= @movie.released %>
+</p>
+
+<p>
+  <b>Imdb:</b>
+  <%= @movie.imdb_id %>
+</p>
+
+<p>
+    <b>Tmdb:</b>
+    <%= @movie.tmdb_id %>
+</p>
+
+<p>
+  <b>Overview:</b>
+  <%= @movie.overview %>
+</p>
+
+<p>
+  <b>Tagline:</b>
+  <%= @movie.tagline %>
+</p>
+
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
+
+<img src="<%=@movie.movie_backdrops.first.url%>">

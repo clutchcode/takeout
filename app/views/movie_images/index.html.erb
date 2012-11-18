@@ -1,0 +1,39 @@
+<h1>Listing movie_images</h1>
+
+<table>
+  <tr>
+    <th>Url</th>
+    <th>Size</th>
+    <th>Aspect ratio</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Language</th>
+    <th>Sort order</th>
+    <th>Movie</th>
+    <th>Movie collection</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @movie_images.each do |movie_image| %>
+  <tr>
+    <td><%= movie_image.url %></td>
+    <td><%= movie_image.size %></td>
+    <td><%= movie_image.aspect_ratio %></td>
+    <td><%= movie_image.width %></td>
+    <td><%= movie_image.height %></td>
+    <td><%= movie_image.language %></td>
+    <td><%= movie_image.sort_order %></td>
+    <td><%= movie_image.movie %></td>
+    <td><%= movie_image.movie_collection %></td>
+    <td><%= link_to 'Show', movie_image %></td>
+    <td><%= link_to 'Edit', edit_movie_image_path(movie_image) %></td>
+    <td><%= link_to 'Destroy', movie_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Movie image', new_movie_image_path %>

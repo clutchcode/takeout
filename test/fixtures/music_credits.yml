@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  credit: MyString
+  department: MyString
+  job: MyString
+  music_album: 
+  music_member: 
+
+two:
+  credit: MyString
+  department: MyString
+  job: MyString
+  music_album: 
+  music_member: 

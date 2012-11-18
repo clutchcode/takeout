@@ -1,0 +1,2 @@
+module MovieCollectionsHelper
+end

@@ -1,0 +1,7 @@
+<div>
+<% @movies.each do |movie| %>
+    <span style="padding:3px">
+        <a href="<%=url_for movie%>"><%=movie_cover(movie, :class => 'movie-cover')%></a>
+    </span>
+<% end %>
+</div>

@@ -1,0 +1,61 @@
+<%= form_for(@music_song) do |f| %>
+  <% if @music_song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@music_song.errors.count, "error") %> prohibited this music_song from being saved:</h2>
+
+      <ul>
+      <% @music_song.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :track %><br />
+    <%= f.number_field :track %>
+  </div>
+  <div class="field">
+    <%= f.label :length %><br />
+    <%= f.number_field :length %>
+  </div>
+  <div class="field">
+    <%= f.label :vbr %><br />
+    <%= f.check_box :vbr %>
+  </div>
+  <div class="field">
+    <%= f.label :bitrate %><br />
+    <%= f.number_field :bitrate %>
+  </div>
+  <div class="field">
+    <%= f.label :sample_rate %><br />
+    <%= f.number_field :sample_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :channle_mode %><br />
+    <%= f.text_field :channle_mode %>
+  </div>
+  <div class="field">
+    <%= f.label :part %><br />
+    <%= f.number_field :part %>
+  </div>
+  <div class="field">
+    <%= f.label :set %><br />
+    <%= f.number_field :set %>
+  </div>
+  <div class="field">
+    <%= f.label :file_uri %><br />
+    <%= f.text_field :file_uri %>
+  </div>
+  <div class="field">
+    <%= f.label :music_album %><br />
+    <%= f.text_field :music_album %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

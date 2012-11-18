@@ -1,0 +1,37 @@
+<%= form_for(@music_credit) do |f| %>
+  <% if @music_credit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@music_credit.errors.count, "error") %> prohibited this music_credit from being saved:</h2>
+
+      <ul>
+      <% @music_credit.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :credit %><br />
+    <%= f.text_field :credit %>
+  </div>
+  <div class="field">
+    <%= f.label :department %><br />
+    <%= f.text_field :department %>
+  </div>
+  <div class="field">
+    <%= f.label :job %><br />
+    <%= f.text_field :job %>
+  </div>
+  <div class="field">
+    <%= f.label :music_album %><br />
+    <%= f.text_field :music_album %>
+  </div>
+  <div class="field">
+    <%= f.label :music_member %><br />
+    <%= f.text_field :music_member %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

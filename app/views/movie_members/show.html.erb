@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @movie_member.name %>
+</p>
+
+<% @movie_member.movies.each do |movie| %>
+<%= link_to movie.title, movie %><br>
+<% end %>
+
+<%= link_to 'Edit', edit_movie_member_path(@movie_member) %> |
+<%= link_to 'Back', movie_members_path %>

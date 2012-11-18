@@ -1,0 +1,36 @@
+<div style="float: left">
+    <%= music_album_cover(@album, :width => 300, :height => 300, :class => 'music_cover')%>
+</div>
+<div style="float: left">
+    <div>
+        <span class="music-title"><%= @album.title %></span>
+        <span class="music-year">(<%= @album.year %>)</span>
+    </div>
+    <div>
+        <span class="music-artist"><%= @album.music_artist.name %></span>
+    </div>
+    <div>
+        <%= @album.total_length/60 %> mins &ndash;
+        <%= @album.track_count %> tracks
+        <% if @album.release_type %>
+            &ndash; <%= @album.release_type.capitalize %>
+        <% end %>
+        <% if @album.release_country %>
+            [<%= @album.release_country %>]
+        <% end %>
+    </div>
+    <div>
+        <span class="music-heading">Genre:</span>
+        <span class="music-genre"><%= @album.music_genres.map { |genre| genre.name }.join(", ") %></span>
+    </div>
+    <hr>
+    <div class="">
+        <ol>
+            <% @album.music_songs.order(:track).each do |song| %>
+                <li><a href="#" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></li>
+            <% end %>
+        </ol>
+        <audio id="audioPlayer" preload></audio>
+    </div>
+
+</div>

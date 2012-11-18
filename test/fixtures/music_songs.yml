@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  track: 1
+  length: 1
+  vbr: false
+  bitrate: 1
+  sample_rate: 1
+  channle_mode: MyString
+  part: 1
+  set: 1
+  file_url: MyString
+  music_album: 
+
+two:
+  title: MyString
+  track: 1
+  length: 1
+  vbr: false
+  bitrate: 1
+  sample_rate: 1
+  channle_mode: MyString
+  part: 1
+  set: 1
+  file_url: MyString
+  music_album: 

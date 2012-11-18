@@ -1,0 +1,43 @@
+<h1>Listing music_images</h1>
+
+<table>
+  <tr>
+    <th>Source</th>
+    <th>Url</th>
+    <th>Size</th>
+    <th>Aspect ratio</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Language</th>
+    <th>Sort order</th>
+    <th>Image type</th>
+    <th>Music artist</th>
+    <th>Music album</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @music_images.each do |music_image| %>
+  <tr>
+    <td><%= music_image.source %></td>
+    <td><%= music_image.url %></td>
+    <td><%= music_image.size %></td>
+    <td><%= music_image.aspect_ratio %></td>
+    <td><%= music_image.width %></td>
+    <td><%= music_image.height %></td>
+    <td><%= music_image.language %></td>
+    <td><%= music_image.sort_order %></td>
+    <td><%= music_image.image_type %></td>
+    <td><%= music_image.music_artist %></td>
+    <td><%= music_image.music_album %></td>
+    <td><%= link_to 'Show', music_image %></td>
+    <td><%= link_to 'Edit', edit_music_image_path(music_image) %></td>
+    <td><%= link_to 'Destroy', music_image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Music image', new_music_image_path %>

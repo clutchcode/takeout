@@ -1,0 +1,5 @@
+$('#nav').hide();
+$('#nav').html("<%= escape_javascript(link_to @artist.name, @artist, :remote => true) %>");
+$('#nav').fadeIn();
+$('#body').html("<%= escape_javascript(render('show')) %>");
+

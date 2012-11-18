@@ -1,0 +1,5 @@
+
+<div style="float: left; vertical-align: top; padding-right: 5px; padding-bottom: 5px; min-width: 673px">
+    <%= music_artist_large(@artist) %>
+</div>
+<%= render :collection => @artist.albums_by_date, :partial => 'music_albums/album' %>

@@ -1,0 +1,4 @@
+<div>
+    <span style="font-size: 200%"><%= @genre.name %></span>
+</div>
+<%= render :collection => @genre.movies, :partial => 'movies/movie' %>

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  alt_title: MyString
+  sort_title: MyString
+  url: MyString
+  rating: MyString
+  runtime: 1
+  released: 2012-10-02
+  imdb_id: MyString
+  overview: MyText
+  tagline: MyText
+
+two:
+  title: MyString
+  alt_title: MyString
+  sort_title: MyString
+  url: MyString
+  rating: MyString
+  runtime: 1
+  released: 2012-10-02
+  imdb_id: MyString
+  overview: MyText
+  tagline: MyText

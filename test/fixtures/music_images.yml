@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  source: MyString
+  url: MyString
+  size: MyString
+  aspect_ratio: 1.5
+  width: 1
+  height: 1
+  language: MyString
+  sort_order: 1
+  image_type: MyString
+  music_artist: 
+  music_album: 
+
+two:
+  source: MyString
+  url: MyString
+  size: MyString
+  aspect_ratio: 1.5
+  width: 1
+  height: 1
+  language: MyString
+  sort_order: 1
+  image_type: MyString
+  music_artist: 
+  music_album: 

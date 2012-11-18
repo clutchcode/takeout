@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Music genre:</b>
+  <%= @music_category.music_genre %>
+</p>
+
+<p>
+  <b>Music song:</b>
+  <%= @music_category.music_song %>
+</p>
+
+
+<%= link_to 'Edit', edit_music_category_path(@music_category) %> |
+<%= link_to 'Back', music_categories_path %>

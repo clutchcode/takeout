@@ -1,0 +1,70 @@
+<div style="height:100%">
+    <table border="0" width="100%" height="100%">
+        <tr>
+            <td valign="top">
+            </td>
+            <td></td>
+            <td valign="top"></td>
+        </tr>
+        <tr>
+            <td valign="bottom" width="500">
+                <div style="padding:10px">
+                    <%= music_song_cover(@music_song, :width => 500, :height => 500, :class => 'music_cover')%>
+                </div>
+            </td>
+            <td></td>
+            <td width="50%" valign="bottom">
+                <div style="padding:10px">
+                    <div class="music_card">
+                        <div>
+                            <span class="music_show_title"><%= @music_song.title %></span>
+                            <span class="music_show_year">(<%= @music_song.year %>)</span>
+                        </div>
+                        <div>
+                            <span class="music_show_tagline"><%= @music_song.music_album.title %></span>
+                        </div>
+                        <hr>
+                        <div>
+                            <span class="music_show_length"><%= @music_song.length %> secs</span>,
+                            <span class="music_show_bitrate"><%= @music_song.bitrate %> bit</span>,
+                            <span class="music_show_sample_rate"><%= @music_song.sample_rate %> Hz</span>,
+                            <span class="music_show_channel_mode"><%= @music_song.channel_mode %></span>
+                            <span class="music_show_vbr"><%= @music_song.vbr? ? ', VBR' : ''%></span>
+                        </div>
+                        <p>
+
+                        <p>
+                        <div>
+                            <span class="music_show_heading">Genre:</span>
+                            <span class="music_show_genre"><%= @music_song.music_genres.map { |genre| genre.name }.join(", ") %></span>
+                        </div>
+                        <p>
+                        <div>
+                            <span class="music_show_heading">Artist:</span>
+                            <span class="music_show_artist"><%= @music_song.music_artist.name %></span>
+                        </div>
+                        <p>
+                        <div>
+                            <span class="">Staring:</span>
+                            <span class="">aaa</span>
+                        </div>
+                        <hr>
+                        <div>
+                            <span class="">aaa</span>
+                        </div>
+                        <hr>
+                        <div>
+                            <audio controls="controls">
+                                <source src="<%= stream_music_song_path @music_song %>">
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+
+    </table>
+</div>
+<div class="movie_backdrop">
+    <%=  %>
+</div>

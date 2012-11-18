@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Source:</b>
+  <%= @music_image.source %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @music_image.url %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @music_image.size %>
+</p>
+
+<p>
+  <b>Aspect ratio:</b>
+  <%= @music_image.aspect_ratio %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @music_image.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @music_image.height %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%= @music_image.language %>
+</p>
+
+<p>
+  <b>Sort order:</b>
+  <%= @music_image.sort_order %>
+</p>
+
+<p>
+  <b>Image type:</b>
+  <%= @music_image.image_type %>
+</p>
+
+<p>
+  <b>Music artist:</b>
+  <%= @music_image.music_artist %>
+</p>
+
+<p>
+  <b>Music album:</b>
+  <%= @music_image.music_album %>
+</p>
+
+
+<%= link_to 'Edit', edit_music_image_path(@music_image) %> |
+<%= link_to 'Back', music_images_path %>

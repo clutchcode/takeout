@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  url: 
+  size: 
+  width: 
+  height: 
+  movie: 
+
+two:
+  url: 
+  size: 
+  width: 
+  height: 
+  movie: 

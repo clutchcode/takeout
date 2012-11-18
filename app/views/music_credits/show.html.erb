@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Credit:</b>
+  <%= @music_credit.credit %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%= @music_credit.department %>
+</p>
+
+<p>
+  <b>Job:</b>
+  <%= @music_credit.job %>
+</p>
+
+<p>
+  <b>Music album:</b>
+  <%= @music_credit.music_album %>
+</p>
+
+<p>
+  <b>Music member:</b>
+  <%= @music_credit.music_member %>
+</p>
+
+
+<%= link_to 'Edit', edit_music_credit_path(@music_credit) %> |
+<%= link_to 'Back', music_credits_path %>

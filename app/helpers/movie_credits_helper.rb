@@ -1,0 +1,2 @@
+module MovieCreditsHelper
+end

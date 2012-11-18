@@ -1,0 +1,6 @@
+CREATE USER 'takeout'@'localhost' IDENTIFIED BY 'takeout';
+GRANT ALL PRIVILEGES ON *.* TO 'takeout'@'localhost' WITH GRANT OPTION;
+CREATE USER 'takeout'@'%' IDENTIFIED BY 'takeout';
+GRANT ALL PRIVILEGES ON *.* TO 'takeout'@'%' WITH GRANT OPTION;
+
+CREATE DATABASE takeout DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+    <img src="<%= @movie_credit.profile %>">
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @movie_credit.name %>
+</p>
+
+<p>
+  <b>Job:</b>
+  <%= @movie_credit.job %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%= @movie_credit.department %>
+</p>
+
+<p>
+  <b>Character:</b>
+  <%= @movie_credit.character %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @movie_credit.order %>
+</p>
+
+<p>
+  <b>Profile:</b>
+  <%= @movie_credit.profile %>
+</p>
+
+<p>
+  <b>Movie:</b>
+  <%= @movie_credit.movie %>
+</p>
+
+
+<%= link_to 'Edit', edit_movie_credit_path(@movie_credit) %> |
+<%= link_to 'Back', movie_credits_path %>
