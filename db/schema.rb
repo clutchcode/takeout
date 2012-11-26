@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030231851) do
+ActiveRecord::Schema.define(:version => 20121119230952) do
+
+  create_table "devices", :force => true do |t|
+    t.string   "name"
+    t.string   "view"
+    t.string   "user_agent"
+    t.integer  "width"
+    t.integer  "height"
+    t.float    "aspect_ratio"
+    t.string   "audio"
+    t.string   "video"
+    t.string   "html5"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "movie_categories", :force => true do |t|
     t.integer "movie_id"

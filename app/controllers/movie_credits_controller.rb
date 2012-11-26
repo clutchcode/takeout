@@ -21,63 +21,19 @@ class MovieCreditsController < ApplicationController
     end
   end
 
-  # GET /movie_credits/new
-  # GET /movie_credits/new.json
-  def new
-    @movie_credit = MovieCredit.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @movie_credit }
-    end
+  def actors
+    @credit = MovieCredit.where(:job => 'Actor')
   end
 
-  # GET /movie_credits/1/edit
-  def edit
-    @movie_credit = MovieCredit.find(params[:id])
+  def directors
+    @credit = MovieCredit.where(:job => 'Director')
   end
 
-  # POST /movie_credits
-  # POST /movie_credits.json
-  def create
-    @movie_credit = MovieCredit.new(params[:movie_credit])
-
-    respond_to do |format|
-      if @movie_credit.save
-        format.html { redirect_to @movie_credit, notice: 'Movie credit was successfully created.' }
-        format.json { render json: @movie_credit, status: :created, location: @movie_credit }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @movie_credit.errors, status: :unprocessable_entity }
-      end
-    end
+  def writers
+    @credit = MovieCredit.where(:job => 'Writer')
   end
 
-  # PUT /movie_credits/1
-  # PUT /movie_credits/1.json
-  def update
-    @movie_credit = MovieCredit.find(params[:id])
-
-    respond_to do |format|
-      if @movie_credit.update_attributes(params[:movie_credit])
-        format.html { redirect_to @movie_credit, notice: 'Movie credit was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @movie_credit.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /movie_credits/1
-  # DELETE /movie_credits/1.json
-  def destroy
-    @movie_credit = MovieCredit.find(params[:id])
-    @movie_credit.destroy
-
-    respond_to do |format|
-      format.html { redirect_to movie_credits_url }
-      format.json { head :no_content }
-    end
+  def producers
+    @credit = MovieCredit.where(:job => 'Producer')
   end
 end

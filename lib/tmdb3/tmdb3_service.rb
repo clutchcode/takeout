@@ -6,9 +6,9 @@ class Tmdb3Service
   attr_accessor :country
 
   def initialize
-    @engine = ApiEngine.new('tmdb', HOST, PORT)
+    @engine = ApiEngine.new('tmdb3', HOST, PORT)
     @engine.json = true
-    @api_key = ApiKey.get_key('tmdb')
+    @api_key = ApiKey.get_key('tmdb3')
 
     @language = 'en' # ISO 639-1
     @country = 'US' # ISO 3166-1
@@ -148,25 +148,3 @@ class Tmdb3Service
   end
 
 end
-
-#service = Tmdb3Service.new
-#service.configuration
-#
-#results = service.search_movie(ARGV[0])
-#results.each do |result|
-#  p result
-#  puts
-#
-#  detail = service.movie_detail(result['id'])
-#  p detail
-#  puts
-#
-#  credits = service.movie_credits(result['id'])
-#  p credits
-#  puts
-#
-#  rating = service.movie_rating(result['id'])
-#  p rating
-#  puts
-#
-#end

@@ -4,7 +4,7 @@ module ApiKey
   extend self
 
   API_KEYS = {
-    'tmdb' => '',
+    'tmdb3' => '',
     'fanart' => '',
     'lastfm2' => ''
   }

@@ -1,0 +1,5 @@
+<div>
+    <span style="font-size: 200%"><%= @member.name %></span>
+    <%= member_profile(@member) %>
+</div>
+<%= render :collection => @member.movies, :partial => 'movies/movie' %>

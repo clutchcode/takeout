@@ -19,7 +19,7 @@ Takeout::Application.routes.draw do
     end
   end
   resources :music_categories
-  resources :music_genres do
+  resources :music_genres, :only => [:index, :show] do
     member do
       get 'artists'
       get 'albums'
@@ -40,13 +40,15 @@ Takeout::Application.routes.draw do
     end
   end
 
+  # Movies
+
   resources :movie_members do
     member do
       get 'movies'
     end
   end
 
-  resources :movies do
+  resources :movies, :only => [:index, :show] do
     member do
       get 'credits'
       get 'cast'
@@ -55,10 +57,10 @@ Takeout::Application.routes.draw do
       get 'stream'
     end
   end
-  resources :movie_credits
-  resources :movie_collections
-  resources :movie_images
-  resources :movie_genres do
+  resources :movie_credits, :only => [:index, :show]
+  resources :movie_collections, :only => [:index, :show]
+  resources :movie_images, :only => [:index, :show]
+  resources :movie_genres, :only => [:index, :show] do
     member do
       get 'movies'
     end

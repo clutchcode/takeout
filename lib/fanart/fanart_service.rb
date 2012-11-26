@@ -32,7 +32,3 @@ class FanartService
   end
 
 end
-
-#service = FanartService.new
-#p service.album_covers "2ba66802-18a7-3bf4-958c-db871a6e7f34"
-#p service.album_covers "e0ea7166-292c-31de-870d-8c4622ec451b"

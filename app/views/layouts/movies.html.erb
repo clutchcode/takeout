@@ -12,16 +12,17 @@
 <div id="menu" style="font-size:200%">
     Takeout
     &ndash;
-    <%= link_to('Movies', movies_path, :remote => true) %>
+    <%= link_to('Movies', movies_path, :remote => false) %>
     &ndash;
-    <%= link_to('Collections', movie_collections_path, :remote => true) %>
+    <%= link_to('Collections', movie_collections_path, :remote => false) %>
     &ndash;
-    <%= link_to('Genres', movie_genres_path, :remote => true) %>
+    <%= link_to('Genres', movie_genres_path, :remote => false) %>
 </div>
 <div id="nav">
 </div>
 
 <div id="body">
+    <%= yield %>
 </div>
 
 </body>

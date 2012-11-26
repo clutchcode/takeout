@@ -5,7 +5,7 @@ class MovieGenresController < ApplicationController
     @genres = MovieGenre.order(:name)
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => 'movies' }
       format.js
       format.json { render json: @genres }
     end

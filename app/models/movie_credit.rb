@@ -6,4 +6,20 @@ class MovieCredit < ActiveRecord::Base
   def name
     movie_member.name
   end
+
+  def self.actors
+    MovieCredit.where(:job => 'Actor').includes(:movie_member)
+  end
+
+  def self.directors
+    MovieCredit.where(:job => 'Director').includes(:movie_member)
+  end
+
+  def self.writers
+    MovieCredit.where(:job => 'Writer').includes(:movie_member)
+  end
+
+  def self.producers
+    MovieCredit.includes(:movie_members).where(:job => 'Producer')
+  end
 end
