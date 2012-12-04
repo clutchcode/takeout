@@ -27,7 +27,7 @@
     <div class="">
         <ol>
             <% @album.music_songs.order(:track).each do |song| %>
-                <li><a href="<%= stream_music_song_path song %>"><%= song.title %></a></li>
+                <li><a href="#" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></li>
             <% end %>
         </ol>
         <audio id="audioPlayer" preload></audio>

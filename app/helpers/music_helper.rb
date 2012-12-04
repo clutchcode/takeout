@@ -12,7 +12,7 @@ module MusicHelper
   end
 
   def music_artist_backdrop(music_artist, options = {})
-    backdrops = music_artist.music_images.where(:image_type => 'backdrop').order("sort_order desc")
+    backdrops = music_artist.music_images.where(:source => 'fanart', :image_type => 'artistbackground').order("sort_order desc")
     if backdrops.length > 0
       image_tag(url_for(backdrops.first), options)
     else
@@ -35,7 +35,17 @@ module MusicHelper
   end
 
   def music_artist_large(music_artist, options = {})
-    images = music_artist.music_images.where(:image_type => 'image', :size => 'mega')
+    #images = music_artist.music_images.where(:image_type => 'artistthumb')
+    images = music_artist.music_images.where(:image_type => 'image', :size => 'mega') # if images.length == 0
+    if images.length > 0
+      image_tag(url_for(images.first), options)
+    else
+      ""
+    end
+  end
+
+  def music_artist_logo(music_artist, options = {})
+    images = music_artist.music_images.where(:image_type => 'musiclogo')
     if images.length > 0
       image_tag(url_for(images.first), options)
     else

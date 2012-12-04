@@ -1,0 +1,43 @@
+/*
+ *= require application
+ *= require_self
+ */
+
+.music-box { width: 330px; height: 110px; border: 1px solid #d3d3d3; margin: 3px 3px 0px 0px; padding: 2px 2px 2px 2px; float: left }
+.music-box-image { vertical-align: top; padding: 0px 10px 10px 0px; float: left }
+.music-box-detail { vertical-align: top }
+.music-box-title { font-size: 150% }
+.music-box-header { font-size: 200% }
+.music-box-artist { font-style: italic }
+
+.music-backdrop {position: fixed; top:0; left:0; opacity:1; z-index: -99999; background-size: contain}
+.music-cover {border-radius: 10px}
+.music-thumb {border-radius: 10px}
+
+.music-card {padding:10px;color:white;background-color:black;border-radius:10px;opacity:0.7}
+
+.music-title {font-size:230%; font-weight:bold}
+.music-year {font-size:150%}
+.music-tagline {font-size:100%; font-style:italic}
+.music-heading {font-weight: bold}
+.music-length {font-weight: normal}
+.music-bitrate {font-weight: normal}
+.music-sample-rate {font-weight: normal}
+.music-channel-mode {font-weight: normal}
+.music-vbr {font-weight: normal}
+.music-genre {font-weight: normal}
+.music-artist {font-weight: normal; font-style: italic;}
+.music-overview {font-weight: normal}
+.music-track {font-weight: normal}
+.music-tracks {font-weight: normal}
+.music-url {font-weight: normal}
+
+.music-track-listing {font-weight: normal}
+
+
+/*ol { padding: 0px; margin: 0px; list-style: decimal-leading-zero inside; color: #ccc; width: 460px; border-top: 1px solid #ccc; font-size: 0.9em; }*/
+/*ol li { position: relative; margin: 0px; padding: 9px 2px 10px; border-bottom: 1px solid #ccc; cursor: pointer; }*/
+/*ol li a { display: block; text-indent: -3.3ex; padding: 0px 0px 0px 20px; }*/
+li.playing { color: #aaa; text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); }
+li.playing a { color: #000; }
+li.playing:before { content: '♬'; width: 14px; height: 14px; padding: 3px; line-height: 14px; margin: 0px; position: absolute; left: -24px; top: 9px; color: #000; font-size: 13px; text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); }

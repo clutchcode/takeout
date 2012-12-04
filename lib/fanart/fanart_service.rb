@@ -8,14 +8,14 @@ class FanartService
     @api_key = ApiKey.get_key('fanart')
   end
 
-  def artist_backdrops(mbid)
-    params = { :mbid => mbid, :type => 'artistbackground' }
+  def artist_all(mbid)
+    params = { :mbid => mbid, :type => 'all' }
     invoke('/webservice/artist', params)
   end
 
-  def album_covers(mbid)
-    params = { :mbid => mbid, :type => 'albumcover' }
-    invoke('/webservice/album', params)
+  def artist_backdrops(mbid)
+    params = { :mbid => mbid, :type => 'artistbackground' }
+    invoke('/webservice/artist', params)
   end
 
   def artist_thumbs(mbid)
@@ -26,7 +26,7 @@ class FanartService
   def invoke(uri, params = {})
     params[:sort] ||= 1
     params[:format] ||= 'json'
-    params[:limit] ||= 2
+    params[:limit] ||= 1
     params[:api_key] ||= @api_key
     @engine.get("#{uri}/#{params[:api_key]}/#{params[:mbid]}/#{params[:format]}/#{params[:type]}/#{params[:sort]}/#{params[:limit]}/")
   end

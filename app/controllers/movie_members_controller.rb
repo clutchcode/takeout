@@ -1,19 +1,38 @@
 class MovieMembersController < ApplicationController
   layout 'movies'
 
-  # GET /movie_members
-  # GET /movie_members.json
   def index
-    @members = MovieMember.directors
+    @members = MovieMember.order(:name)
+    members
+  end
 
+  def members
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render 'index'}
       format.json { render json: @members }
     end
   end
 
-  # GET /movie_members/1
-  # GET /movie_members/1.json
+  def actors
+    @members = MovieMember.actors
+    members
+  end
+
+  def directors
+    @members = MovieMember.directors
+    members
+  end
+
+  def producers
+    @members = MovieMember.producers
+    members
+  end
+
+  def writers
+    @members = MovieMember.writers
+    members
+  end
+
   def show
     @member = MovieMember.find(params[:id])
 

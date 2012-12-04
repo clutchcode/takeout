@@ -1,10 +1,9 @@
 <div style="width: 330px; height: 150px; border: 1px solid #d3d3d3; margin: 3px 3px 0px 0px; padding: 2px 2px 2px 2px; float: left">
     <div style="vertical-align: top; padding: 0px 10px 0px 0px; float: left;">
-        <%= member_thumb(member) %>
+        <% #member_thumb(member) %>
     </div>
     <div style="vertical-align: top">
         <span style="font-size: 175%"><%= link_to member.name, member, :remote => false %></span>
         <br/>
-        <span style=""><%= member.movie_count %> <%= "movie".pluralize member.movie_count %></span>
     </div>
 </div>

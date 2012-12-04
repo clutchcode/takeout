@@ -1,14 +1,14 @@
-<div style="width: 330px; height: 110px; border: 1px solid #d3d3d3; margin: 3px 3px 0px 0px; padding: 2px 2px 2px 2px; float: left">
-    <div style="vertical-align: top; padding: 0px 10px 10px 0px; float: left;">
-        <%= link_to music_album_cover(album, :width => 100, :height => 100), album, :remote => true %>
+<div class="music-box">
+    <div class="music-box-image">
+        <%= link_to music_album_cover(album, :width => 100, :height => 100), album %>
     </div>
-    <div style="vertical-align: top">
-        <span style="font-size: 150%"><%= link_to album.title, album, :remote => true %></span>
-        <span>(<%= album.year %>)</span>
+    <div class="music-box-detail">
+        <span class="music-box-title"><%= link_to album.title, album %></span>
+        <span>(<%= album.original_date.year %>)</span>
         <br/>
-        <span style="font-style: italic;"><%= album.music_artist.name %></span>
+        <span class="music-box-artist"><%= album.music_artist.name %></span>
         <br/>
-        <span style="">
+        <span>
             <%= album.total_length/60 %> mins &ndash;
             <%= album.track_count %> tracks
             <% if album.release_type %>

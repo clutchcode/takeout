@@ -2,26 +2,26 @@
 <html>
 <head>
   <title>Takeout</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "music" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div id="menu" style="font-size:200%">
+<div id="menu" style="font-size: 200%">
     Takeout
     &ndash;
-    <%= link_to('Artists', music_artists_path, :remote => true) %>
+    <%= link_to('Artists', music_artists_path, :remote => false) %>
     &ndash;
-    <%= link_to('Albums', music_albums_path, :remote => true) %>
+    <%= link_to('Albums', music_albums_path, :remote => false) %>
     &ndash;
-    <%= link_to('Genres', music_genres_path, :remote => true) %>
+    <%= link_to('Genres', music_genres_path, :remote => false) %>
 </div>
 <div id="nav">
 </div>
 
 <div id="body">
+    <%= yield %>
 </div>
 
 </body>

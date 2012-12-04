@@ -1,12 +1,12 @@
-<div style="width: 330px; height: 150px; border: 1px solid #d3d3d3; margin: 3px 3px 0px 0px; padding: 2px 2px 2px 2px; float: left">
-    <div style="vertical-align: top; padding: 0px 10px 0px 0px; float: left;">
-        <%= link_to music_artist_image(artist, :style => 'min-width: 126px; max-height: 150px'), artist, :remote => true %>
+<div class="music-box">
+    <div class="music-box-image">
+        <%= link_to music_artist_image(artist, :style => 'min-width: 126px; max-height: 150px'), artist %>
     </div>
-    <div style="vertical-align: top">
-        <span style="font-size: 175%"><%=link_to artist.name, artist, :remote => true %></span>
+    <div class="music-box-detail">
+        <span class="music-box-title"><%=link_to artist.name, artist %></span>
         <br/>
-        <span style=""><%= artist.album_count %> <%= "album".pluralize artist.album_count %></span>
+        <span><%= artist.album_count %> <%= "album".pluralize artist.album_count %></span>
         &ndash;
-        <span style=""><%= artist.song_count %> tracks</span>
+        <span><%= artist.song_count %> tracks</span>
     </div>
 </div>

@@ -14,6 +14,6 @@ class MusicArtist < ActiveRecord::Base
   end
 
   def albums_by_date
-    music_albums.order('original_date desc')
+    music_albums.order('original_date asc')
   end
 end

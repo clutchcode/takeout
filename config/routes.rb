@@ -46,7 +46,17 @@ Takeout::Application.routes.draw do
     member do
       get 'movies'
     end
+    collection do
+      get 'actors'
+      get 'directors'
+      get 'producers'
+      get 'writers'
+    end
   end
+  match 'movie_actors' => 'movie_members#actors'
+  match 'movie_directors' => 'movie_members#directors'
+  match 'movie_producers' => 'movie_members#producers'
+  match 'movie_writers' => 'movie_members#writers'
 
   resources :movies, :only => [:index, :show] do
     member do

@@ -23,6 +23,7 @@ class MusicBusiness < ApplicationBusiness
           puts "scanning #{path}"
 
           MusicSong.transaction do
+          #begin
             song = MusicSong.find_or_create_by_file_uri(path)
             song.last_modified = File.mtime(path)
             song.title = mp3info.tag.title
@@ -81,16 +82,17 @@ class MusicBusiness < ApplicationBusiness
             artist.music_albums << album
 
             fanart_images = artist.music_images.where(:source => 'fanart')
+
             if fanart_images.empty?
-              images = fanart.artist_backdrops(artist.mbid) if artist.mbid
+              images = fanart.artist_all(artist.mbid) if artist.mbid
               images.each_value do |v|
                 v.each do |key, value|
-                  artist.music_images.where(:source => 'fanart', :image_type => 'backdrop').destroy_all
-                  if key == "artistbackground"
+                  #artist.music_images.where(:source => 'fanart').destroy_all
+                  if key =~ /(albumcover|artistbackground|artistthumb|cdart|musiclogo)/
                     value.each do |image|
-                      artist.music_images.create(
+                      artist.music_images.create!(
                           :source => 'fanart',
-                          :image_type => 'backdrop',
+                          :image_type => key,
                           :url => image['url'],
                           :sort_order => image['likes'])
                     end

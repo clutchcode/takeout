@@ -1,6 +1,4 @@
 class MovieCreditsController < ApplicationController
-  # GET /movie_credits
-  # GET /movie_credits.json
   def index
     @movie_credits = MovieCredit.all
 
@@ -10,8 +8,6 @@ class MovieCreditsController < ApplicationController
     end
   end
 
-  # GET /movie_credits/1
-  # GET /movie_credits/1.json
   def show
     @movie_credit = MovieCredit.find(params[:id])
 

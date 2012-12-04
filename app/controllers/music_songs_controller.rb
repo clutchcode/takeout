@@ -1,6 +1,8 @@
 require 'mp3info'
 
 class MusicSongsController < ApplicationController
+  layout 'music'
+
   # GET /music_songs
   # GET /music_songs.json
   def index
