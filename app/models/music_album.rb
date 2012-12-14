@@ -17,4 +17,8 @@ class MusicAlbum < ActiveRecord::Base
   def song_count
     track_count
   end
+
+  def original_year
+    original_date ? original_date.year : year
+  end
 end

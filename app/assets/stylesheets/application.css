@@ -16,6 +16,8 @@ a {color: inherit; }
 img {border:0px;}
 img a, img a:link, img a:active, img a:visited, img a:hover {border:0px;}
 
+a.fill-div { display: block; height: 100%; width: 100%; text-decoration: none; text-indent: -9999px; overflow: hidden}
+
 .movie-backdrop {position:fixed; top:0; left:0; width:100%; height:100%; opacity:1; z-index: -99999; background-size: contain}
 .movie-cover {border-radius: 10px}
 .movie-thumb {border-radius: 10px}

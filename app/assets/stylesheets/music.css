@@ -3,7 +3,7 @@
  *= require_self
  */
 
-.music-box { width: 330px; height: 110px; border: 1px solid #d3d3d3; margin: 3px 3px 0px 0px; padding: 2px 2px 2px 2px; float: left }
+.music-box { cursor: pointer; width: 330px; height: 110px; border: 1px solid #d3d3d3; margin: 3px 3px 0px 0px; padding: 2px 2px 2px 2px; float: left }
 .music-box-image { vertical-align: top; padding: 0px 10px 10px 0px; float: left }
 .music-box-detail { vertical-align: top }
 .music-box-title { font-size: 150% }

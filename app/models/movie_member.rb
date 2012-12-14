@@ -2,7 +2,7 @@ class MovieMember < ActiveRecord::Base
   has_many :movie_credits
   has_many :movies, :through => :movie_credits, :uniq => true
   has_many :movie_images
-  attr_accessible :name
+  attr_accessible :name, :sort_name, :tmdb_id
 
   def thumb
     thumbs.first
@@ -41,7 +41,7 @@ class MovieMember < ActiveRecord::Base
   end
 
   def self.has_job(job)
-    MovieMember.joins(:movie_credits).where('movie_credits.job' => job).order(:name).uniq
+    MovieMember.joins(:movie_credits).where('movie_credits.job' => job).order(:sort_name).uniq
   end
 
 end

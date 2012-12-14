@@ -14,7 +14,7 @@ class MusicAlbumsController < ApplicationController
     @album = MusicAlbum.find(params[:id])
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => 'fullscreen' }
       format.json { render json: @album }
     end
   end

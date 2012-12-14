@@ -111,7 +111,10 @@ class MovieBusiness < ApplicationBusiness
                   :character => cast['character'],
                   :job => 'Actor',
                   :sort_order => cast['order'])
-              member = MovieMember.find_or_create_by_name(cast['name'])
+              member = MovieMember.find_or_create_by_tmdb_id(cast['id'])
+              member.name = cast['name']
+              member.sort_name = to_sort_name(cast['name'])
+              member.save!
               member.movie_credits << credit
               cast['images'].each do |image|
                 member.movie_images.create(
@@ -126,7 +129,10 @@ class MovieBusiness < ApplicationBusiness
                   :department => crew['department'],
                   :job => crew['job'],
                   :sort_order => crew['order'])
-              member = MovieMember.find_or_create_by_name(crew['name'])
+              member = MovieMember.find_or_create_by_tmdb_id(crew['id'])
+              member.name = crew['name']
+              member.sort_name = to_sort_name(crew['name'])
+              member.save!
               member.movie_credits << credit
               crew['images'].each do |image|
                 member.movie_images.create(

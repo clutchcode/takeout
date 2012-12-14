@@ -1,2 +1,5 @@
 <div class="music-box-header"><%= @artist.name %></div>
+<div style="float: left">
+    <%= music_artist_large(@artist) %>
+</div>
 <%= render :collection => @artist.albums_by_date, :partial => 'music_albums/album' %>
