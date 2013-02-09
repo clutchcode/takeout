@@ -1,5 +1,10 @@
-<div class="music-box-header"><%= @artist.name %></div>
-<div style="float: left">
+<h1><%= @artist.name %></h1>
+<div>
+    <%= raw @artist.music_genres.map { |genre| link_to genre.name, genre }.join(", ") %>
+</div>
+<div class="scroll" style="float: left; display: table-cell; padding: 3px 6px 3px 3px">
     <%= music_artist_large(@artist) %>
 </div>
-<%= render :collection => @artist.albums_by_date, :partial => 'music_albums/album' %>
+<div style="display: table-cell;">
+    <%= render :collection => @artist.albums_by_date, :partial => 'music_albums/album' %>
+</div>

@@ -12,6 +12,8 @@ class CreateMusicAlbums < ActiveRecord::Migration
       t.string :release_country
       t.string :release_status
       t.string :mbid
+      t.integer :total_tracks
+      t.integer :total_length
 
       t.timestamps
     end

@@ -21,6 +21,7 @@ module Takeout
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += %W(#{config.root}/lib/fanart)
     config.autoload_paths += %W(#{config.root}/lib/lastfm2)
+    config.autoload_paths += %W(#{config.root}/lib/musicbrainz2)
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

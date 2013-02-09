@@ -1,15 +1,12 @@
-<div class="music-box">
-    <div class="music-box-image">
+<div class="genre">
+    <div class="genre-cover">
         <% album = genre.music_albums.first %>
         <%= link_to music_album_cover(album, :width => 100, :height => 100), album %>
     </div>
-    <div class="music-box-detail">
-        <span class="music-box-title"><%=link_to genre.name, genre %></span>
-        <br/>
-        <span><%= genre.artist_count %> <%= "artist".pluralize genre.artist_count %></span>
-        &ndash;
-        <span><%= genre.album_count %> <%= "album".pluralize genre.album_count %></span>
-        &ndash;
-        <span><%= genre.song_count %> songs</span>
+    <div class="genre-detail">
+        <div><strong><%= link_to genre.name, genre %></strong></div>
+        <div><small><%= genre.artist_count %> <%= td(:artist).pluralize genre.artist_count %>,
+        <%= genre.album_count %> <%= td(:album).pluralize genre.album_count %>,
+        <%= genre.song_count %> <%= td :songs %></small></div>
     </div>
 </div>

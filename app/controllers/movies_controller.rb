@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  layout 'movies'
+  layout 'application'
 
   # GET /movies
   # GET /movies.json

@@ -46,4 +46,16 @@ class Movie < ActiveRecord::Base
     movie_genres.order(:name)
   end
 
+  def self.modified(limit = 1)
+    Movie.order('last_modified desc').limit(limit)
+  end
+
+  def self.added(limit = 1)
+    Movie.order('created_at desc').limit(limit)
+  end
+
+  def self.released(limit = 1)
+    Movie.order('release_date desc').limit(limit)
+  end
+
 end

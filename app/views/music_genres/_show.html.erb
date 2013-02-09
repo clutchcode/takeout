@@ -1,4 +1,2 @@
-<div>
-    <span class="music-box-header"><%= @genre.name %></span>
-</div>
+<h2><%= @genre.name %></h2>
 <%= render :collection => @genre.music_artists, :partial => 'music_artists/artist' %>

@@ -1,6 +1,11 @@
-<div style="font-size:200%">
-    <%= link_to 'Music', music_artists_path %>
-    <%= link_to 'Movies', movie_genres_path %>
-</div>
 
+<h2>Music</h2>
 
+<ul class="thumbnails">
+    <%= render :collection => @albums, :partial => 'music_albums/thumb' %>
+</ul>
+
+<h2>Movies</h2>
+<ul class="thumbnails">
+    <%= render :collection => @movies, :partial => 'movies/thumb' %>
+</ul>

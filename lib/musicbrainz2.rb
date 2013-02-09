@@ -1,0 +1,1 @@
+require 'musicbrainz2/musicbrainz2_service'

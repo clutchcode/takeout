@@ -51,22 +51,28 @@ class ApplicationController < ActionController::Base
 
   # returns [:image => data, :type => content-type]
   def embedded_music_cover(music_song)
-    @cache = ActiveSupport::Cache.lookup_store(:file_store, Takeout::Application.config.image_cache_dir) unless @cache
-
     return nil unless music_song.has_cover?
-    key = "cover:#{music_song.file_uri}".gsub(/[^a-zA-z0-9]/, '_')
-    cover = @cache.fetch(key)
+    #@cache = ActiveSupport::Cache.lookup_store(:file_store, Takeout::Application.config.image_cache_dir) unless @cache
+    #key = "cover:#{music_song.file_uri}".gsub(/[^a-zA-z0-9]/, '_')
+    #cover = @cache.fetch(key)
     unless cover
-      Mp3Info.open(music_song.file_uri) do |mp3info|
-        data = mp3info.tag2.APIC
-        if data and data =~ /(image\/[a-z]+)/
-          type = $1
-          index = data.index("\xFF\xD8\xFF\xE0")
-          cover = { :image => data[index..-1], :type => type }
-          @cache.write(key, cover, :expires_in => 1.hour)
+      if music_song.file_uri =~ /\.mp3$/
+        Mp3Info.open(music_song.file_uri) do |mp3info|
+          data = mp3info.tag2.APIC
+          if data and data =~ /(image\/[a-z]+)/
+            type = $1
+            index = data.index("\xFF\xD8\xFF\xE0")
+            cover = { :image => data[index..-1], :type => type }
+          end
         end
+      elsif music_song.file_uri =~ /\.m4a$/
+        mp4info = MP4Info.open(music_song.file_uri)
+        data = mp4info.COVR
+        cover = { :image => data, :type => 'image/jpeg' } if data
       end
+      #@cache.write(key, cover, :expires_in => 30.days) if cover
     end
     cover
   end
+
 end

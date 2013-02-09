@@ -1,5 +1,3 @@
-require 'image_cache'
-
 class MusicImagesController < ApplicationController
   def show
     @music_image = MusicImage.find(params[:id])

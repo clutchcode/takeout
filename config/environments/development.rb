@@ -29,11 +29,7 @@ Takeout::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # Do not compress assets
-  config.assets.compress = false
-
-  # Expands the lines which load the assets
-  config.assets.debug = true
+  config.assets.enabled = false
 
   config.action_dispatch.x_sendfile_header = 'X-Sendfile' if File.exists? "/usr/sbin/apache2" and File.exist? "/etc/apache2"
   config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' if File.exists? "/usr/sbin/nginx" and File.exists? "/etc/nginx"

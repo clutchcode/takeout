@@ -16,4 +16,8 @@ class MusicArtist < ActiveRecord::Base
   def albums_by_date
     music_albums.order('original_date asc')
   end
+
+  def self.artist_count
+    MusicArtist.count
+  end
 end

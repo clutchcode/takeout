@@ -3,11 +3,28 @@ module MusicHelper
     if music_song.has_cover?
       image_tag(cover_music_song_path(music_song), options)
     else
-      image_tag('/nocover.png', options)
+      images = music_song.music_album.music_images.where(:source => 'lastfm', :image_type => 'cover', :size => 'mega')
+      if images.length > 0
+        image_tag(url_for(images.first), options)
+      else
+        image_tag('nocover.png', options)
+      end
     end
   end
 
   def music_album_cover(music_album, options = {})
+    music_song_cover(music_album.music_songs.first, options)
+  end
+
+  def music_album_icon(music_album, options = {})
+    options[:width] ||= 100
+    options[:height] ||= 100
+    music_song_cover(music_album.music_songs.first, options)
+  end
+
+  def music_album_thumb(music_album, options = {})
+    options[:width] ||= 100
+    options[:height] ||= 100
     music_song_cover(music_album.music_songs.first, options)
   end
 

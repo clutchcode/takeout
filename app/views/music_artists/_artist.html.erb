@@ -1,12 +1,9 @@
-<div class="music-box" onclick="window.location='<%= url_for artist %>'">
-    <div class="music-box-image">
+<div class="artist" onclick="window.location='<%= url_for artist %>'">
+    <div class="artist-image">
         <%= link_to music_artist_image(artist, :style => 'min-width: 126px; max-height: 150px'), artist %>
     </div>
-    <div class="music-box-detail">
-        <span class="music-box-title"><%= link_to artist.name, artist %></span>
-        <br/>
-        <span><%= artist.album_count %> <%= "album".pluralize artist.album_count %></span>
-        &ndash;
-        <span><%= artist.song_count %> tracks</span>
+    <div class="artist-detail">
+        <div><%= link_to artist.name, artist %></div>
+        <div><small><%= artist.album_count %> <%= td(:album).pluralize artist.album_count %>, <%= artist.song_count %> <%= td(:songs) %></small></div>
     </div>
 </div>

@@ -1,28 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Takeout</title>
-  <%= stylesheet_link_tag "music" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<div id="menu" style="font-size: 200%">
-    Takeout
-    &ndash;
-    <%= link_to('Artists', music_artists_path, :remote => false) %>
-    &ndash;
-    <%= link_to('Albums', music_albums_path, :remote => false) %>
-    &ndash;
-    <%= link_to('Genres', music_genres_path, :remote => false) %>
-</div>
-<div id="nav">
-</div>
-
-<div id="body">
+<%= render :partial => 'shared/header' %>
+<div class="container">
+    <div>
+        <%= link_to t(:artists), music_artists_path %> | <%= link_to t(:albums), music_albums_path %> | <%= link_to t(:genres), music_genres_path %>
+    </div>
     <%= yield %>
 </div>
-
-</body>
-</html>
+<%= render :partial => 'shared/footer' %>

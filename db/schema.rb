@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(:version => 20121212211007) do
     t.string   "release_country"
     t.string   "release_status"
     t.string   "mbid"
+    t.integer  "total_tracks"
+    t.integer  "total_length"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
@@ -195,18 +197,20 @@ ActiveRecord::Schema.define(:version => 20121212211007) do
 
   create_table "music_songs", :force => true do |t|
     t.string   "title"
-    t.integer  "track"
+    t.integer  "track_number"
+    t.integer  "total_tracks"
     t.integer  "length"
     t.boolean  "vbr"
     t.integer  "bitrate"
     t.integer  "sample_rate"
     t.string   "channel_mode"
-    t.integer  "part"
-    t.integer  "set"
+    t.integer  "disc_number"
+    t.integer  "total_discs"
     t.integer  "year"
     t.string   "file_uri"
     t.datetime "last_modified"
     t.boolean  "has_cover"
+    t.string   "mbid"
     t.integer  "music_album_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false

@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def td(key)
+    t(key).downcase
+  end
+
   def m_ss(secs)
     "%d:%02d" % secs.divmod(60)
   end
@@ -7,8 +11,12 @@ module ApplicationHelper
     "%02d:%02d" % secs.divmod(60)
   end
 
-  def h_ss(mins)
+  def h_mm(mins)
     "%d:%02d" % mins.divmod(60)
+  end
+
+  def mins(secs)
+    "%d" % (secs/60)
   end
 
   def partial_name(partial)
