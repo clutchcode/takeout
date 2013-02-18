@@ -6,6 +6,8 @@ class MusicAlbum < ActiveRecord::Base
   has_many :music_credits
   has_many :music_genres, :through => :music_songs, :uniq => true
 
+  scope :with_title_like, lambda { |pattern| { :conditions => ['title like ?', "%#{pattern}%"] } }
+
   #def total_length
   #  music_songs.sum(:length)
   #end

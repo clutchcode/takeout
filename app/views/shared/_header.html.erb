@@ -41,8 +41,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Music <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><%= link_to 'Artists', music_artists_path %></li>
-                            <li><%= link_to 'Albums', music_artists_path %></li>
-                            <li><%= link_to 'Genres', music_artists_path %></li>
+                            <li><%= link_to 'Albums', music_albums_path %></li>
+                            <li><%= link_to 'Genres', music_genres_path %></li>
+                            <li><%= link_to 'Release Date', released_music_albums_path %></li>
+                            <li><%= link_to 'Modified Date', modified_music_albums_path %></li>
+                            <li><%= link_to 'Added Date', added_music_albums_path %></li>
                         </ul>
                     </li>
                     <li class="divider-vertical"></li>
@@ -52,8 +55,8 @@
                 </ul>
             </div><!--/.nav-collapse -->
             <div class="nav-collapse collapse" >
-                <form class="navbar-form pull-right">
-                    <input class="span2" type="text" placeholder="Search">
+                <form class="navbar-form pull-right" action="/music_search">
+                    <input class="span2" type="text" name="q" placeholder="Search">
                     <button class='btn add-on'><i class="icon-search"></i></button>
                 </form>
             </div>

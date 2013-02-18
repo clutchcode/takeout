@@ -1,61 +1,18 @@
-<%= music_artist_backdrop(@album.music_artist, :class => 'music-backdrop') %>
-<div style="height: 100%">
-    <table border="0" width="100%" height="100%">
-        <tr>
-            <td valign="top">
-                <%= music_artist_logo(@album.music_artist) %>
-            </td>
-            <td></td>
-            <td valign="top"></td>
-        </tr>
-        <tr>
-            <td valign="bottom" width="300">
-                <div style="padding:10px">
-                    <%= music_album_cover(@album, :width => 300, :height => 300, :class => 'music_cover')%>
-                </div>
-            </td>
-            <td></td>
-            <td width="40%" valign="bottom">
-                <div style="padding:10px">
-                    <div class="music-card">
-                        <div>
-                            <span class="music-title"><%= @album.title %></span>
-                            <span class="music-year">(<%= @album.year %>)</span>
-                        </div>
-                        <div>
-                            <span class="music-artist"><%= @album.music_artist.name %></span>
-                        </div>
-                        <div>
-                            <%= @album.total_length/60 %> mins &ndash;
-                            <%= @album.track_count %> tracks
-                            <% if @album.release_type %>
-                                &ndash; <%= @album.release_type.capitalize %>
-                            <% end %>
-                            <% if @album.release_country %>
-                                [<%= @album.release_country %>]
-                            <% end %>
-                        </div>
-                        <p>
-                        <div>
-                            <span class="music-heading">Genre:</span>
-                            <span class="music-genre"><%= @album.music_genres.map { |genre| genre.name }.join(", ") %></span>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ol>
-                                <% @album.music_songs.order(:disc_number, :track_number).each do |song| %>
-                                <li><a href="#" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></li>
-                                <% end %>
-                            </ol>
-                            <audio id="audioPlayer" preload></audio>
-                        </div>
-                        <hr>
-                        <div>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-    </table>
+<div>
+    <h1><%= @album.title %> <small>by <%= link_to @album.music_artist.name, @album.music_artist %></small></h1>
+</div>
+<div class="scroll" style="display: table-cell; vertical-align: top; float: left; padding-right: 10px">
+    <%= music_album_cover(@album, :width => 330, :height => 330) %>
+    <p></p>
+    <audio id="audio" controls="controls" style="width: 330px; padding-bottom: 10px"></audio>
+</div>
+<div style="display: table-cell; min-width: 330px; vertical-align: top; float: left;">
+    <ol style="margin-left: 7px">
+        <% @album.music_songs.order(:disc_number, :track_number).each do |song| %>
+            <li><span style="color: #999999"><%= "%02d-" % song.disc_number if song.total_discs > 1 %><%= "%02d" % song.track_number %>.</span> <strong><a href="#" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></strong> <small><span style="color: #999999"><%= mm_ss song.length %></span></small></li>
+        <% end %>
+    </ol>
+    <p class="text-center">
+        <%= @album.release_date %> <%= @album.release_country %> <%= @album.release_type.capitalize %> <%= @album.release_status.capitalize %>
+    </p>
 </div>

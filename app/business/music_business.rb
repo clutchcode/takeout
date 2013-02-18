@@ -1,9 +1,16 @@
 require 'find'
 require 'mp3info'
 require 'uri_cache'
-#require '/home/boyns/projects/ruby-mp4info/lib/mp4info'
 
 class MusicBusiness < ApplicationBusiness
+
+  def search(pattern)
+    artists = MusicArtist.with_name_like(pattern)
+    albums = MusicAlbum.with_title_like(pattern)
+    genres = MusicGenre.with_name_like(pattern)
+    songs = MusicSong.with_title_like(pattern)
+    { :artists => artists, :albums => albums, :genres => genres, :songs => songs }
+  end
 
   def scan(directory)
     fanart = FanartService.new

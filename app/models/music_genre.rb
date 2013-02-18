@@ -5,6 +5,8 @@ class MusicGenre < ActiveRecord::Base
   has_many :music_albums, :through => :music_songs, :uniq => true
   has_many :music_artists, :through => :music_albums, :uniq => true
 
+  scope :with_name_like, lambda { |pattern| { :conditions => ['name like ?', "%#{pattern}%"] } }
+
   def song_count
     music_songs.count
   end

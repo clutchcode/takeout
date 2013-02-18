@@ -1,0 +1,26 @@
+<% if @artists.size > 0 %>
+<h2>Artists <small><%= @artists.size %> <%= t(:result).pluralize(@artists.size).downcase %></small></h2>
+<%= render :collection => @artists, :partial => 'music_artists/artist' %>
+<div style="clear:both"></div>
+<% end %>
+
+<% if @albums.size > 0 %>
+<h2>Albums <small><%= @albums.size %> <%= t(:result).pluralize(@albums.size).downcase %></small></h2>
+<%= render :collection => @albums, :partial => 'music_albums/album' %>
+<div style="clear:both"></div>
+<% end %>
+
+<% if @genres.size > 0 %>
+    <h2>Genres <small><%= @genres.size %> <%= t(:result).pluralize(@genres.size).downcase %></small></h2>
+    <%= render :collection => @genres, :partial => 'music_genres/genre' %>
+    <div style="clear:both"></div>
+<% end %>
+
+<% if @songs.size > 0 %>
+<h2>Songs <small><%= @songs.size %> <%= t(:result).pluralize(@songs.size).downcase %></small></h2>
+    <!--<audio id="audio" controls="controls" style="width: 400px; padding-bottom: 10px"></audio>-->
+    <ol style="margin-left: 0px; margin-right: 0px">
+        <%= render :collection => @songs, :partial => 'music_songs/song' %>
+    </ol>
+<div style="clear:both"></div>
+<% end %>

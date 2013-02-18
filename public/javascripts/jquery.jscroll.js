@@ -65,7 +65,7 @@
 				if (margin > max)
 					margin = max;
 
-                if ($(window).width() - $element.width() < 400) {
+                if (($element.width() / $(window).width()) >= .4) {
                     margin = this.originalMargin;
                 }
 

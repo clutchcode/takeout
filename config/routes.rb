@@ -9,7 +9,6 @@ Takeout::Application.routes.draw do
 
   resources :music_images
 
-  resources :music_queue, :controller => 'music_queue'
   resource :music, :controller => 'music' do
     member do
       get 'artists'
@@ -33,12 +32,19 @@ Takeout::Application.routes.draw do
       get 'cover'
     end
   end
-  resources :music_albums
+  resources :music_albums, :only => [:index, :show] do
+    collection do
+      get 'released'
+      get 'modified'
+      get 'added'
+    end
+  end
   resources :music_artists do
     member do
       get 'test'
     end
   end
+  resources :music_search, :only => [:index]
 
   # Movies
 
