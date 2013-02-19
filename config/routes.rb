@@ -41,7 +41,7 @@ Takeout::Application.routes.draw do
   end
   resources :music_artists do
     member do
-      get 'test'
+      get 'songs'
     end
   end
   resources :music_search, :only => [:index]

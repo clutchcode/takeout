@@ -18,4 +18,15 @@ class MusicArtistsController < ApplicationController
       format.json { render json: @artist }
     end
   end
+
+  def songs
+    @artist = MusicArtist.find(params[:id])
+    albums = @artist.music_albums.uniq.map { |album| album.id }
+    @songs = MusicSong.find_all_by_music_album_id(albums)
+
+    respond_to do |format|
+      format.html { render 'music_songs/index' }
+      format.json
+    end
+  end
 end

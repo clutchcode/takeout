@@ -6,7 +6,7 @@ function doAudioPlayer() {
 
     var loadTrack = function(track) {
         $(track).addClass('playing').siblings().removeClass('playing');
-        audio.src = $(track).find('a[data-src]').attr('data-src');
+        audio.src = $('a[data-src]').attr('data-src');
         audio.load();
     };
 

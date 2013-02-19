@@ -8,3 +8,7 @@
 <div style="display: table-cell;">
     <%= render :collection => @artist.albums_by_date, :partial => 'music_albums/album' %>
 </div>
+<p></p>
+<div>
+    <%= link_to 'All Songs', songs_music_artist_path %>
+</div>
