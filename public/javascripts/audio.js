@@ -6,7 +6,8 @@ function doAudioPlayer() {
 
     var loadTrack = function(track) {
         $(track).addClass('playing').siblings().removeClass('playing');
-        audio.src = $('a[data-src]').attr('data-src');
+        audio.src = $('a[data-src]', track).attr('data-src');
+//        audio.src = $('a', track).attr('data-src');
         audio.load();
     };
 
@@ -32,7 +33,7 @@ function doAudioPlayer() {
     };
 
     var playPause = function() {
-        if (audio.autoplay) {
+        if (!audio.paused) {
             audio.pause();
         }
         else {
@@ -56,7 +57,7 @@ function doAudioPlayer() {
     });
 
     audio.addEventListener('pause', function() {
-        audio.autoplay = false;
+//        audio.autoplay = false;
     });
 
     audio.addEventListener('ended', function() {

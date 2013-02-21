@@ -18,7 +18,7 @@
 
 <% if @songs.size > 0 %>
 <h2>Songs <small><%= @songs.size %> <%= t(:result).pluralize(@songs.size).downcase %></small></h2>
-    <!--<audio id="audio" controls="controls" style="width: 400px; padding-bottom: 10px"></audio>-->
+    <audio id="audio" controls="controls" style="width: 400px; padding-bottom: 10px"></audio>
     <ol style="margin-left: 0px; margin-right: 0px">
         <%= render :collection => @songs, :partial => 'music_songs/song' %>
     </ol>
