@@ -23,6 +23,7 @@ class MusicArtistsController < ApplicationController
     @artist = MusicArtist.find(params[:id])
     albums = @artist.music_albums.uniq.map { |album| album.id }
     @songs = MusicSong.find_all_by_music_album_id(albums)
+    @title = @artist.name
 
     respond_to do |format|
       format.html { render 'music_songs/index' }

@@ -9,6 +9,15 @@ function doAudioPlayer() {
         audio.src = $('a[data-src]', track).attr('data-src');
 //        audio.src = $('a', track).attr('data-src');
         audio.load();
+
+        $('.song-cover').each(function() {
+            this.src = $('a[data-cover]', track).attr('data-cover');
+        });
+        $('.song-anchor').each(function() {
+            this.href = $('a[data-anchor]', track).attr('data-anchor');
+        });
+        $('.song-title').text($('a[data-title]', track).attr('data-title'));
+        $('.song-artist').text($('a[data-artist]', track).attr('data-artist'));
     };
 
     var firstTrack = function() {

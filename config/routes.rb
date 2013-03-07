@@ -3,6 +3,14 @@ Takeout::Application.routes.draw do
 
   resource :welcome
 
+  resource :settings do
+    member do
+      get 'scan'
+      get 'music_scan'
+      get 'movies_scan'
+    end
+  end
+
   resources :music_members
 
   resources :music_credits

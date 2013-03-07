@@ -1,9 +1,9 @@
-<li style="cursor: pointer; list-style: none; margin-bottom: 5px" onclick="window.location='<%= url_for song.music_album %>'">
+<li style="cursor: pointer; list-style: none; margin-bottom: 5px" xonclick="window.location='<%= url_for song.music_album %>'">
     <div style="display: table-cell; vertical-align: top">
         <%= music_song_cover(song, :class => 'list-cover') %>
     </div>
     <div style="display: table-cell; vertical-align: top">
-        <strong><a href="#" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></strong> by <%= link_to song.music_artist.name, song.music_artist %>
+        <strong><a href="#" data-anchor="<%= url_for song.music_album %>" data-cover="<%= music_song_cover_path song %>" data-artist="<%= song.music_artist.name %>" data-album="<%= song.music_album.title %>" data-title="<%= song.title %>" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></strong> by <%= link_to song.music_artist.name, song.music_artist %>
         <br>
         <small>
             <%= song.music_album.title %> (<%= song.music_album.year %>)

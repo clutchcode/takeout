@@ -5,6 +5,6 @@
     <div class="album-detail">
         <div><strong><%= link_to truncate(album.title), album %></strong> (<%= album.original_year %>)</div>
         <div><em><%= truncate(album.music_artist.name) %></em></div>
-        <div><small><%= mins(album.total_length) %> <%= td :mins %>, <%= album.total_tracks %> <%= td :songs %></small></div>
+        <div><small><%= album.total_tracks %> <%= td :songs %>, <%= mins(album.total_length) %> <%= td :mins %></small></div>
     </div>
 </div>

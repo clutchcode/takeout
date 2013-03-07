@@ -1,3 +1,23 @@
-<ol>
-    <%= render :collection => @songs, :partial => 'music_songs/song' %>
-</ol>
+<div>
+    <h1><%= @title %></h1>
+</div>
+<div class="scroll section">
+    <div style="position: relative; margin-bottom: 3px">
+        <a class="song-anchor" href=""><img class="song-cover" width="330" height="330"></a>
+        <div class="cover-caption">
+            <div style="margin-left: 5px;">
+                <div><strong><span class="song-title"></span></strong></div>
+                <div><small><%= t :by %> <span class="song-artist"></span></small></div>
+            </div>
+        </div>
+    </div>
+    <p></p>
+    <audio id="audio" controls="controls" style="width: 330px; padding-bottom: 10px"></audio>
+    <p></p>
+    <button onclick="$('ol li').shuffle()">Shuffle</button>
+</div>
+<div class="noscroll section" style="min-width: 330px">
+    <ol>
+        <%= render :collection => @songs, :partial => 'music_songs/song' %>
+    </ol>
+</div>

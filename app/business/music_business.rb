@@ -12,7 +12,20 @@ class MusicBusiness < ApplicationBusiness
     { :artists => artists, :albums => albums, :genres => genres, :songs => songs }
   end
 
-  def scan(directory)
+  def destroy
+    MusicArtist.transaction do
+      MusicArtist.destroy_all
+      MusicAlbum.destroy_all
+      MusicSong.destroy_all
+      MusicCategory.destroy_all
+      MusicGenre.destroy_all
+      MusicImage.destroy_all
+    end
+  end
+
+  def scan(directory = nil)
+    directory ||= Takeout::Application.config.music_dir
+
     fanart = FanartService.new
     lastfm = Lastfm2Service.new
     mbz = Musicbrainz2Service.new
@@ -248,13 +261,13 @@ class MusicBusiness < ApplicationBusiness
   end
 end
 
-o = MusicBusiness.new
+#o = MusicBusiness.new
 #o.scan('/data/Music/Godspeed You! Black Emperor')
 #o.scan('/data/Music/Godspeed You Black Emperor!')
 #o.scan('/data/Music/Tame Impala')
 #o.scan('/data/Music/ABBA')
 #o.scan('/data/Music/Mary Wells')
-o.scan('/data/Music/Gary Numan')
+#o.scan('/data/Music/Gary Numan')
 #o.scan('/data/Music')
 
 

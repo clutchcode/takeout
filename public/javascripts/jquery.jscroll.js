@@ -65,8 +65,11 @@
 				if (margin > max)
 					margin = max;
 
-                if (($element.width() / $(window).width()) >= .4) {
-                    margin = this.originalMargin;
+                // turn off scrolling when above noscroll
+                if (opts.noscroll) {
+                    if ($(opts.noscroll).offset().top > $element.offset().top) {
+                        margin = this.originalMargin;
+                    }
                 }
 
                 return ({"marginTop" : margin + 'px'});
@@ -78,7 +81,7 @@
     // Public: Default values
     $.fn.jScroll.defaults = {
         speed	:	"slow",
-		top		:	10
+		top		:	50
     };
 
 })(jQuery);

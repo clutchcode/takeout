@@ -3,7 +3,9 @@ require 'tmdb3'
 
 class MovieBusiness < ApplicationBusiness
 
-  def scan(directory)
+  def scan(directory = nil)
+    directory ||= Takeout::Application.config.movies_dir
+
     tmdb = Tmdb3Service.new
     tmdb.configuration
 
@@ -154,5 +156,5 @@ class MovieBusiness < ApplicationBusiness
   end
 end
 
-o = MovieBusiness.new
-o.scan('/data/Video/Movies')
+#o = MovieBusiness.new
+#o.scan('/data/Video/Movies')

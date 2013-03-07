@@ -1,15 +1,23 @@
 <div>
     <h1><%= @album.title %> <small>by <%= link_to @album.music_artist.name, @album.music_artist %></small></h1>
 </div>
-<div class="scroll" style="display: table-cell; vertical-align: top; float: left; padding-right: 10px">
-    <%= music_album_cover(@album, :width => 330, :height => 330) %>
+<div class="scroll section" style="padding-right: 10px; padding-bottom: 10px">
+    <div class="cover-wrapper">
+        <%= music_album_cover(@album, :width => 330, :height => 330) %>
+        <div class="cover-caption">
+            <div style="margin-left: 5px;">
+                <div><strong><span class="song-title"></span></strong></div>
+                <div><small><%= t :by %> <span class="song-artist"></span></small></div>
+            </div>
+        </div>
+    </div>
     <p></p>
-    <audio id="audio" controls="controls" style="width: 330px; padding-bottom: 10px"></audio>
+    <audio id="audio" controls="controls" style="width: 330px"></audio>
 </div>
-<div style="display: table-cell; min-width: 330px; vertical-align: top; float: left;">
+<div class="noscroll section" style="min-width: 330px">
     <ol style="margin-left: 7px">
         <% @album.music_songs.order(:disc_number, :track_number).each do |song| %>
-            <li><span style="color: #999999"><%= "%02d-" % song.disc_number if song.total_discs > 1 %><%= "%02d" % song.track_number %>.</span> <strong><a href="#" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></strong> <small><span style="color: #999999"><%= mm_ss song.length %></span></small></li>
+            <li><span style="color: #999999"><%= "%02d-" % song.disc_number if song.total_discs > 1 %><%= "%02d" % song.track_number %>.</span> <strong><a href="#" data-artist="<%= song.music_artist.name %>" data-album="<%= song.music_album.title %>" data-title="<%= song.title %>" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></strong> <small><span style="color: #999999"><%= mm_ss song.length %></span></small></li>
         <% end %>
     </ol>
     <p class="text-center">
