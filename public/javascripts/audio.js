@@ -7,7 +7,6 @@ function doAudioPlayer() {
     var loadTrack = function(track) {
         $(track).addClass('playing').siblings().removeClass('playing');
         audio.src = $('a[data-src]', track).attr('data-src');
-//        audio.src = $('a', track).attr('data-src');
         audio.load();
 
         $('.song-cover').each(function() {
@@ -18,6 +17,7 @@ function doAudioPlayer() {
         });
         $('.song-title').text($('a[data-title]', track).attr('data-title'));
         $('.song-artist').text($('a[data-artist]', track).attr('data-artist'));
+        $('.song-album').text($('a[data-album]', track).attr('data-album'));
     };
 
     var firstTrack = function() {

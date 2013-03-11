@@ -1,9 +1,9 @@
 <div>
-    <h1><%= @album.title %> <small>by <%= link_to @album.music_artist.name, @album.music_artist %></small></h1>
+    <h1><%= @album.title %> <small><%= t :by %> <%= link_to @album.music_artist.name, @album.music_artist %></small></h1>
 </div>
 <div class="scroll section" style="padding-right: 10px; padding-bottom: 10px">
     <div class="cover-wrapper">
-        <%= music_album_cover(@album, :width => 330, :height => 330) %>
+        <%= music_album_cover(@album, :class => "cover-image") %>
         <div class="cover-caption">
             <div style="margin-left: 5px;">
                 <div><strong><span class="song-title"></span></strong></div>
@@ -12,9 +12,9 @@
         </div>
     </div>
     <p></p>
-    <audio id="audio" controls="controls" style="width: 330px"></audio>
+    <audio id="audio" controls="controls" style="width: 100%"></audio>
 </div>
-<div class="noscroll section" style="min-width: 330px">
+<div class="noscroll section cover-min-width">
     <ol style="margin-left: 7px">
         <% @album.music_songs.order(:disc_number, :track_number).each do |song| %>
             <li><span style="color: #999999"><%= "%02d-" % song.disc_number if song.total_discs > 1 %><%= "%02d" % song.track_number %>.</span> <strong><a href="#" data-artist="<%= song.music_artist.name %>" data-album="<%= song.music_album.title %>" data-title="<%= song.title %>" data-src="<%= stream_music_song_path song %>"><%= song.title %></a></strong> <small><span style="color: #999999"><%= mm_ss song.length %></span></small></li>
