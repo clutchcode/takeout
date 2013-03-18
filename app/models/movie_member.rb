@@ -1,8 +1,12 @@
 class MovieMember < ActiveRecord::Base
-  has_many :movie_credits
+  has_many :movie_credits, :include => :movie, :order => 'movies.release_date'
   has_many :movies, :through => :movie_credits, :uniq => true
   has_many :movie_images
   attr_accessible :name, :sort_name, :tmdb_id
+
+  def sort_char
+    sort_name.first.capitalize
+  end
 
   def thumb
     thumbs.first

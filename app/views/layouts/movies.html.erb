@@ -1,28 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Takeout</title>
-    <%= stylesheet_link_tag "movies" %>
-    <%= javascript_include_tag "application" %>
-    <%= csrf_meta_tags %>
-</head>
-<body>
-
-<div id="menu" style="font-size:200%">
-    Takeout
-    &ndash;
-    <%= link_to('Genres', movie_genres_path, :remote => false) %>
-    &ndash;
-    <%= link_to('Collections', movie_collections_path, :remote => false) %>
-    &ndash;
-    <%= link_to('Movies', movies_path, :remote => false) %>
-</div>
-<div id="nav">
-</div>
-
-<div id="body">
+<%= render :partial => 'shared/header' %>
+<div class="container">
+    <div>
+        <%= link_to t(:all_movies), movies_path %> | <%= link_to t(:genres), movie_genres_path %> | <%= link_to t(:collections), movie_collections_path %>
+    </div>
+    <p></p>
     <%= yield %>
 </div>
-
-</body>
-</html>
+<%= render :partial => 'shared/footer' %>

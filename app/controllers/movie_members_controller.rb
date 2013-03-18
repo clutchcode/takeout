@@ -7,6 +7,12 @@ class MovieMembersController < ApplicationController
   end
 
   def members
+    @member_groups = {}
+    @members.each do |member|
+      @member_groups[member.sort_char] ||= []
+      @member_groups[member.sort_char] << member
+    end
+
     respond_to do |format|
       format.html { render 'index'}
       format.json { render json: @members }
@@ -14,21 +20,25 @@ class MovieMembersController < ApplicationController
   end
 
   def actors
+    @title = t :actors
     @members = MovieMember.actors
     members
   end
 
   def directors
+    @title = t :directors
     @members = MovieMember.directors
     members
   end
 
   def producers
+    @title = t :producers
     @members = MovieMember.producers
     members
   end
 
   def writers
+    @title = t :writers
     @members = MovieMember.writers
     members
   end

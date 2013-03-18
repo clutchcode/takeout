@@ -21,6 +21,6 @@
         <% end %>
     </ol>
     <p class="text-center">
-        <%= @album.release_date %> <%= @album.release_country %> <%= @album.release_type.capitalize %> <%= @album.release_status.capitalize %>
+        <%= @album.release_date %> <%= @album.release_country %> <%= @album.release_type.capitalize if @album.release_type %> <%= @album.release_status.capitalize if @album.release_status %>
     </p>
 </div>

@@ -1,5 +1,12 @@
-<div>
-    <span style="font-size: 200%"><%= @member.name %></span>
+<h1><%= @member.name %></h1>
+<div style="float: left; padding-right: 21px; padding-bottom: 13px">
     <%= member_profile(@member) %>
 </div>
-<%= render :collection => @member.movies, :partial => 'movies/movie' %>
+<div style="float: left">
+    <table class="table table-bordered">
+        <tr><th>Movie</th><th>Year</th><th>Character</th><th>Role</th></tr>
+        <% @member.movie_credits.each do |credit| %>
+            <tr><td><%= link_to credit.movie.title, credit.movie %></td><td><%= credit.movie.year %></td><td><%= credit.job %></td><td><%= credit.character %></td></tr>
+        <% end %>
+    </table>
+</div>

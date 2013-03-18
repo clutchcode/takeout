@@ -1,11 +1,9 @@
-<div class="movie-box" onclick="window.location='<%= url_for genre %>'">
-    <div class="movie-box-image">
+<div class="movie" onclick="window.location='<%= url_for genre %>'">
+    <div class="movie-image">
         <% movie = genre.movies.first %>
-        <%= link_to movie_thumb(movie, :class => 'movie-cover'), movie %>
+        <%= link_to movie_thumb(movie, :class => 'movie-thumb'), movie %>
     </div>
-    <div class="movie-box-detail">
-        <span class="movie-box-header"><%= link_to genre.name, genre %></span>
-        <br/>
-        <span style=""><%= genre.movie_count %> <%= "movie".pluralize genre.movie_count %></span>
+    <div class="movie-detail">
+        <div><strong><%= link_to genre.name, genre %></strong> (<%= genre.movie_count %>)</div>
     </div>
 </div>

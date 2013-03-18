@@ -80,6 +80,11 @@ Takeout::Application.routes.draw do
       get 'images'
       get 'stream'
     end
+    collection do
+      get 'released'
+      get 'modified'
+      get 'added'
+    end
   end
   resources :movie_credits, :only => [:index, :show]
   resources :movie_collections, :only => [:index, :show]

@@ -156,5 +156,5 @@ class MovieBusiness < ApplicationBusiness
   end
 end
 
-#o = MovieBusiness.new
-#o.scan('/data/Video/Movies')
+o = MovieBusiness.new
+o.scan('/data/Video/Movies')

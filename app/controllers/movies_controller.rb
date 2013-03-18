@@ -1,26 +1,20 @@
 class MoviesController < ApplicationController
-  layout 'application'
+  layout 'movies'
 
-  # GET /movies
-  # GET /movies.json
   def index
     @movies = Movie.order(:sort_title)
 
     respond_to do |format|
       format.html
-      format.js
       format.json { render json: @movies }
     end
   end
 
-  # GET /movies/1
-  # GET /movies/1.json
   def show
     @movie = Movie.find(params[:id])
 
     respond_to do |format|
-      format.html { render template_name }# show.html.erb
-      format.js
+      format.html { render template_name }
       format.json { render json: @movie }
     end
   end
@@ -89,6 +83,30 @@ class MoviesController < ApplicationController
     if request.headers['HTTP_USER_AGENT'] =~ /Silk-Accelerated/i
       response.headers.delete('Content-Disposition')
       response.headers.delete('Content-Transfer-Encoding')
+    end
+  end
+
+  def released
+    @movies = Movie.released(params[:id] || 100)
+    respond_to do |format|
+      format.html { render 'movies/index'}
+      format.json { render json: @movies }
+    end
+  end
+
+  def modified
+    @movies = Movie.modified(params[:id] || 100)
+    respond_to do |format|
+      format.html { render 'movies/index'}
+      format.json { render json: @movies }
+    end
+  end
+
+  def added
+    @movies = Movie.added(params[:id] || 100)
+    respond_to do |format|
+      format.html { render 'movies/index'}
+      format.json { render json: @movies }
     end
   end
 end

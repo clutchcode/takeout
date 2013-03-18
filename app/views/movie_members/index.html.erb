@@ -1,1 +1,13 @@
-<%= render :collection => @members, :partial => 'member' %>
+<h1><%= @title %></h1>
+<div class="pagination">
+    <ul>
+        <% @member_groups.each_key do |group| %>
+            <li><a href="#<%= group %>"><%= group %></a></li>
+        <% end %>
+    </ul>
+</div>
+<p></p>
+<% @member_groups.each do |group, members| %>
+    <h1><a name="<%= group %>"><%= group %></a></h1>
+    <%= render :collection => members, :partial => 'member' %>
+<% end %>

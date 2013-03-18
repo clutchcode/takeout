@@ -3,7 +3,6 @@
 
 en:
   takeout: Takeout
-  movies: Movies
   music: Music
   artists: Artists
   artist: Artist
@@ -15,5 +14,15 @@ en:
   result: Result
   by: by
   settings: Settings
+  new_releases: New Releases
+  recently_added: Recently Added
+  movies: Movies
+  all_movies: Movies
+  collections: Collections
+  actors: Actors
+  directors: Directors
+  producers: Producers
+  writers: Writers
+
 
 
