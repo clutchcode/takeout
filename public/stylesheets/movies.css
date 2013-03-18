@@ -3,3 +3,5 @@
 .movie-detail { vertical-align: top }
 .movie-cover { border-radius: 5px; width: 154px; height: 237px; margin-bottom: 5px; margin-right: 2px; }
 .movie-thumb { border-radius: 5px }
+
+.backdrop-caption { position: absolute; left: 0px; bottom: 0px; width: 100%; opacity: 0.7; background-color: #333333; color: white }

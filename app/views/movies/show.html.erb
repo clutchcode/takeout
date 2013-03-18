@@ -1,65 +1,40 @@
-<div style="height:100%">
-    <table border="0" height="100%">
-        <tr>
-            <td valign="top">
-            </td>
-            <td></td>
-            <td valign="top"></td>
-        </tr>
-        <tr>
-            <td valign="bottom" width="<%=@movie.cover.width%>">
-                <div style="padding:10px">
-                    <%= movie_cover(@movie, :class => 'movie-cover') %>
-                </div>
-            </td>
-            <td></td>
-            <td width="50%" valign="bottom">
-                <div style="padding:10px">
-                    <div class="movie-card">
-                        <div>
-                            <span class="movie-show-title"><%= @movie.title %></span>
-                            <span class="movie-show-year">(<%= @movie.year %>)</span>
-                        </div>
-                        <div>
-                            <span class="movie-show-tagline"><%= @movie.tagline %></span>
-                        </div>
-                        <hr>
-                        <div>
-                            <span class="movie-show-runtime"><%= @movie.runtime %> mins</span>,
-                            <span class="movie-show-rating">Rated <%= @movie.rating.upcase %></span>
-                        </div>
-                        <p>
-
-                        <p>
-                        <div>
-                            <span class="movie-show-heading">Genre:</span>
-                            <span class="movie-show-genre"><%= @movie.genres.map { |genre| genre.name }.join(", ") %></span>
-                        </div>
-                        <p>
-                        <div>
-                            <span class="movie-show-heading">Director:</span>
-                            <span class="movie-show-director"><%= @movie.director.name %></span>
-                        </div>
-                        <p>
-                        <div>
-                            <span class="movie-show-heading">Staring:</span>
-                            <span class="movie-show-cast"><%= @movie.cast.limit(5).map { |actor| actor.name }.join(", ") %></span>
-                        </div>
-                        <hr>
-                        <div>
-                            <span class="movie-show-overview"><%= @movie.overview %></span>
-                        </div>
-                        <hr>
-                        <div>
-                            <span class="movie-show-url"><a href="<%= stream_movie_url @movie %>"><%= @movie.file_uri %></a></span>
-                        </div>
-                    </div>
-                </div>
-            </td>
-        </tr>
-
-    </table>
+<h1><%= @movie.title %> <small><%= @movie.tagline %></small></h1>
+<div>
+    <span class="label label-info">Rated <%= @movie.rating.upcase %></span>
 </div>
-<div class="movie-backdrop">
-    <%= movie_backdrop(@movie, :width => '100%', :height => '100%') %>
+<div style="position: relative; margin-bottom: 3px">
+    <%= movie_backdrop(@movie) %>
+    <div class="backdrop-caption">
+        <div style="margin-left: 5px;">
+        </div>
+    </div>
+</div>
+<p></p>
+<div>
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="#">Home</a>
+        </li>
+        <li><a href="#">...</a></li>
+        <li><a href="#">...</a></li>
+    </ul>
+    <div>
+        <strong>Staring:</strong>
+        <%= raw @movie.cast.limit(5).map { |credit| link_to credit.name, credit.movie_member }.join(", ") %>
+    </div>
+    <div>
+        <strong>Director:</strong>
+        <%= raw @movie.directors.map { |credit| link_to credit.name, credit.movie_member }.join(", ") %>
+    </div>
+    <div>
+        <strong>Genre:</strong>
+        <%= raw @movie.genres.map { |genre| link_to genre.name, genre }.join(", ") %>
+    </div>
+    <div>
+        <span class="movie-show-runtime"><%= @movie.runtime %> mins</span>,
+        <span class="movie-show-rating">Rated <%= @movie.rating.upcase %></span>
+    </div>
+    <div>
+        <span class="movie-show-url"><a href="<%= stream_movie_url @movie %>"><%= @movie.file_uri %></a></span>
+    </div>
 </div>

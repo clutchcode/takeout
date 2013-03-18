@@ -18,6 +18,10 @@ class Movie < ActiveRecord::Base
     movie_credits.where(:job => 'Director').first
   end
 
+  def directors
+    movie_credits.where(:job => 'Director').order(:sort_order)
+  end
+
   def thumb
     thumbs.first
   end
