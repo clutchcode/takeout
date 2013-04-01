@@ -1,2 +1,9 @@
 <h1><%= @collection.name %></h1>
-<%= render :collection => @collection.movies, :partial => 'movies/movie' %>
+<div>
+    <%= collection_backdrop(@collection, :class => 'movie-thumb') %>
+</div>
+<p>
+</p>
+<div>
+    <%= render :collection => @collection.movies, :partial => 'movies/movie' %>
+</div>

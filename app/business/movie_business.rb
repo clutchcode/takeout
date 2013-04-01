@@ -48,15 +48,19 @@ class MovieBusiness < ApplicationBusiness
           parts = nil
         end
 
-        puts "#{path} - #{title} - #{year} - #{edition}"
-
         next unless File.exists?(path)
         file = File.new(path)
 
         movie = Movie.find_by_file_uri(path)
         next if movie
 
+        puts "#{path} | #{title} | #{year}"
+
         results = tmdb.movie_search(title, year)
+        results = tmdb.movie_search(title.gsub(/\s+-\s+/, ' '), year) if results.empty?
+        results = tmdb.movie_search(title.gsub(/\s+-\s+/, ' ').gsub(/-/, ''), year) if results.empty?
+        results = tmdb.movie_search(title.gsub(/\s+-\s+/, ' ').gsub(/-/, ' '), year) if results.empty?
+
         unless results.empty?
           result = results.first
           result = tmdb.movie_detail(result['id'])
@@ -71,6 +75,7 @@ class MovieBusiness < ApplicationBusiness
           movie.sort_title = to_sort_title(result['title'])
           movie.tagline = result['tagline']
           movie.title = result['title']
+          movie.original_title = result['original_title']
           movie.tmdb_id = result['id']
           movie.save!
 
@@ -84,6 +89,21 @@ class MovieBusiness < ApplicationBusiness
             collection = result['belongs_to_collection']
             movie_collection = MovieCollection.find_or_create_by_name(collection['name'])
             movie_collection.movies << movie
+
+            collection_images = tmdb.collection_images(collection['id'])
+            movie_collection.movie_images.transaction do
+              movie_collection.movie_images.destroy_all
+              collection_images.each do |image|
+                movie_collection.movie_images.create(
+                    :source => 'tmdb',
+                    :aspect_ratio => image['aspect_ratio'],
+                    :language => image['language'],
+                    :sort_order => image['sort_order'],
+                    :size => image['size'],
+                    :image_type => image['type'],
+                    :url => image['url'])
+              end
+            end
           end
 
           images = tmdb.movie_images(result['id'])
@@ -98,8 +118,6 @@ class MovieBusiness < ApplicationBusiness
                   :sort_order => image['sort_order'],
                   :size => image['size'],
                   :image_type => image['type'],
-                  #:width => poster['image']['width'],
-                  #:height => poster['image']['height'],
                   :url => image['url'])
             end
           end
@@ -147,12 +165,21 @@ class MovieBusiness < ApplicationBusiness
           end
 
         end
-
-        ##return
-
       end
-
     end
+
+    # check for orphans
+    Movie.all.each do |movie|
+      unless File.exists? movie.file_uri
+        puts "no exist #{movie.file_uri}"
+        p movie
+        movie.destroy
+      end
+    end
+
+    # TODO remove empty collections
+    # TODO remove empty genres
+
   end
 end
 

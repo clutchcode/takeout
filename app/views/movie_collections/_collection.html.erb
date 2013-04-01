@@ -1,7 +1,6 @@
 <div class="movie" onclick="window.location='<%= url_for collection %>'">
     <div class="movie-image">
-        <% movie = collection.movies.first %>
-        <%= link_to movie_thumb(movie, :class => 'movie-thumb'), movie %>
+        <%= link_to collection_thumb(collection, :class => 'movie-thumb'), collection %>
     </div>
     <div class="movie-detail">
         <div><strong><%= link_to collection.name, collection %></strong> (<%= collection.movie_count %>)</div>

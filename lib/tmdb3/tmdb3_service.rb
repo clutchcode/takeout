@@ -126,9 +126,40 @@ class Tmdb3Service
   def movie_images(id)
     result = []
     images = invoke("/movie/#{id}/images", 'language' => @language)
+    images ||= {}
+    images['backdrops'] ||= []
+    images['posters'] ||= []
 
     if images['backdrops'].empty? or images['posters'].empty?
       all_images = invoke("/movie/#{id}/images")
+      all_images ||= {}
+      all_images['backdrops'] ||= []
+      all_images['posters'] ||= []
+      images['backdrops'] = all_images['backdrops'] if images['backdrops'].empty?
+      images['posters'] = all_images['posters'] if images['posters'].empty?
+    end
+
+    images['backdrops'].each do |backdrop|
+      add_backdrop(result, backdrop)
+    end
+    images['posters'].each do |poster|
+      add_poster(result, poster)
+    end
+    result
+  end
+
+  def collection_images(id)
+    result = []
+    images = invoke("/collection/#{id}/images", 'language' => @language)
+    images ||= {}
+    images['backdrops'] ||= []
+    images['posters'] ||= []
+
+    if images['backdrops'].empty? or images['posters'].empty?
+      all_images = invoke("/collection/#{id}/images")
+      all_images ||= {}
+      all_images['backdrops'] ||= []
+      all_images['posters'] ||= []
       images['backdrops'] = all_images['backdrops'] if images['backdrops'].empty?
       images['posters'] = all_images['posters'] if images['posters'].empty?
     end

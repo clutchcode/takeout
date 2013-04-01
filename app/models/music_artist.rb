@@ -1,8 +1,8 @@
 class MusicArtist < ActiveRecord::Base
   attr_accessible :mbid, :name, :overview, :sort_name
-  has_many :music_albums, :uniq => true
-  has_many :music_images
-  has_many :music_songs, :through => :music_albums
+  has_many :music_albums, :uniq => true, :dependent => :destroy
+  has_many :music_images, :dependent => :destroy
+  has_many :music_songs, :through => :music_albums, :dependent => :destroy
   has_many :music_genres, :through => :music_albums, :uniq => true, :order => :name
 
   scope :with_name_like, lambda { |pattern| { :conditions => ['name like ?', "%#{pattern}%"] } }

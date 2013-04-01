@@ -1,6 +1,6 @@
 class MusicGenre < ActiveRecord::Base
   attr_accessible :name
-  has_many :music_categories
+  has_many :music_categories, :dependent => :destroy
   has_many :music_songs, :through => :music_categories, :uniq => true
   has_many :music_albums, :through => :music_songs, :uniq => true
   has_many :music_artists, :through => :music_albums, :uniq => true

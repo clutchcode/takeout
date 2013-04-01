@@ -1,7 +1,4 @@
 <h1><%= @movie.title %> <small><%= @movie.tagline %></small></h1>
-<div>
-    <span class="label label-info">Rated <%= @movie.rating.upcase %></span>
-</div>
 <div style="position: relative; margin-bottom: 3px">
     <%= movie_backdrop(@movie) %>
     <div class="backdrop-caption">
@@ -9,15 +6,14 @@
         </div>
     </div>
 </div>
+<div>
+    <span class="label label-info">Rated <%= @movie.rating.upcase %></span>
+    <span class="label label-info"><%= @movie.runtime %> mins</span>
+    <span class="label label-info"><%= @movie.release_date %></span>
+    <span class="label label-info"><%= @movie.imdb_id %></span>
+</div>
 <p></p>
 <div>
-    <ul class="nav nav-pills">
-        <li class="active">
-            <a href="#">Home</a>
-        </li>
-        <li><a href="#">...</a></li>
-        <li><a href="#">...</a></li>
-    </ul>
     <div>
         <strong>Staring:</strong>
         <%= raw @movie.cast.limit(5).map { |credit| link_to credit.name, credit.movie_member }.join(", ") %>
@@ -31,10 +27,7 @@
         <%= raw @movie.genres.map { |genre| link_to genre.name, genre }.join(", ") %>
     </div>
     <div>
-        <span class="movie-show-runtime"><%= @movie.runtime %> mins</span>,
-        <span class="movie-show-rating">Rated <%= @movie.rating.upcase %></span>
-    </div>
-    <div>
         <span class="movie-show-url"><a href="<%= stream_movie_url @movie %>"><%= @movie.file_uri %></a></span>
     </div>
+
 </div>

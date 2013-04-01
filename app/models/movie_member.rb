@@ -1,7 +1,7 @@
 class MovieMember < ActiveRecord::Base
   has_many :movie_credits, :include => :movie, :order => 'movies.release_date'
   has_many :movies, :through => :movie_credits, :uniq => true
-  has_many :movie_images
+  has_many :movie_images, :dependent => :destroy
   attr_accessible :name, :sort_name, :tmdb_id
 
   def sort_char

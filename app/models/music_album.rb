@@ -1,9 +1,9 @@
 class MusicAlbum < ActiveRecord::Base
   attr_accessible :asin, :mbid, :original_date, :release_country, :release_date, :release_status, :release_type, :sort_title, :title, :total_tracks, :total_length, :year
   belongs_to :music_artist
-  has_many :music_songs, :uniq => true
-  has_many :music_images
-  has_many :music_credits
+  has_many :music_songs, :uniq => true, :dependent => :destroy
+  has_many :music_images, :dependent => :destroy
+  has_many :music_credits, :dependent => :destroy
   has_many :music_genres, :through => :music_songs, :uniq => true
 
   scope :with_title_like, lambda { |pattern| { :conditions => ['title like ?', "%#{pattern}%"] } }

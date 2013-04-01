@@ -16,7 +16,11 @@ module MoviesHelper
   end
 
   def movie_backdrop(movie, options = {})
-    movie_image(movie.backdrop, options)
+    movie_image(movie.backdrops.shuffle.first, options)
+  end
+
+  def movie_poster(movie, options = {})
+    movie_image(movie.posters.shuffle.first, options)
   end
 
   def member_thumb(member, options = {})
@@ -25,5 +29,21 @@ module MoviesHelper
 
   def member_profile(member, options = {})
     movie_image(member.profile, options)
+  end
+
+  def collection_thumb(collection, options = {})
+    movie_image(collection.thumb, options)
+  end
+
+  def collection_cover(collection, options = {})
+    movie_image(collection.cover, options)
+  end
+
+  def collection_backdrop(collection, options = {})
+    movie_image(collection.backdrops.shuffle.first, options)
+  end
+
+  def collection_poster(collection, options = {})
+    movie_image(collection.posters.shuffle.first, options)
   end
 end

@@ -3,6 +3,7 @@ class CreateMovies < ActiveRecord::Migration
     create_table :movies do |t|
       t.string :title
       t.string :sort_title
+      t.string :original_title
       t.string :file_uri
       t.string :rating
       t.integer :runtime
