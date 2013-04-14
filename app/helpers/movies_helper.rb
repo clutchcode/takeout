@@ -32,7 +32,11 @@ module MoviesHelper
   end
 
   def collection_thumb(collection, options = {})
-    movie_image(collection.thumb, options)
+    thumb = collection.thumb
+    unless thumb
+      thumb = collection.movies.shuffle.first.thumb
+    end
+    movie_image(thumb, options)
   end
 
   def collection_cover(collection, options = {})
@@ -40,10 +44,18 @@ module MoviesHelper
   end
 
   def collection_backdrop(collection, options = {})
-    movie_image(collection.backdrops.shuffle.first, options)
+    backdrops = collection.backdrops
+    if backdrops.empty?
+      backdrops = collection.movies.shuffle.first.backdrops
+    end
+    movie_image(backdrops.shuffle.first, options)
   end
 
   def collection_poster(collection, options = {})
-    movie_image(collection.posters.shuffle.first, options)
+    posters = collection.posters
+    if posters.empty?
+      posters = collection.movies.shuffle.first.posters
+    end
+    movie_image(posters.shuffle.first, options)
   end
 end

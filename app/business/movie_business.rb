@@ -87,7 +87,12 @@ class MovieBusiness < ApplicationBusiness
 
           if result['belongs_to_collection']
             collection = result['belongs_to_collection']
-            movie_collection = MovieCollection.find_or_create_by_name(collection['name'])
+            movie_collection = MovieCollection.find_by_name(collection['name'])
+            unless movie_collection
+              movie_collection = MovieCollection.create(
+                  :name => collection['name'],
+                  :sort_name => to_sort_title(collection['name']))
+            end
             movie_collection.movies << movie
 
             collection_images = tmdb.collection_images(collection['id'])

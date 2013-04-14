@@ -1,33 +1,24 @@
 <h1><%= @movie.title %> <small><%= @movie.tagline %></small></h1>
 <div style="position: relative; margin-bottom: 3px">
-    <%= movie_backdrop(@movie) %>
-    <div class="backdrop-caption">
-        <div style="margin-left: 5px;">
-        </div>
-    </div>
+    <%= link_to movie_backdrop(@movie), stream_movie_url(@movie) %>
 </div>
 <div>
     <span class="label label-info">Rated <%= @movie.rating.upcase %></span>
     <span class="label label-info"><%= @movie.runtime %> mins</span>
-    <span class="label label-info"><%= @movie.release_date %></span>
-    <span class="label label-info"><%= @movie.imdb_id %></span>
+    <span class="label label-info"><%= @movie.year %></span>
 </div>
 <p></p>
 <div>
-    <div>
-        <strong>Staring:</strong>
-        <%= raw @movie.cast.limit(5).map { |credit| link_to credit.name, credit.movie_member }.join(", ") %>
-    </div>
-    <div>
-        <strong>Director:</strong>
-        <%= raw @movie.directors.map { |credit| link_to credit.name, credit.movie_member }.join(", ") %>
-    </div>
-    <div>
-        <strong>Genre:</strong>
-        <%= raw @movie.genres.map { |genre| link_to genre.name, genre }.join(", ") %>
-    </div>
-    <div>
-        <span class="movie-show-url"><a href="<%= stream_movie_url @movie %>"><%= @movie.file_uri %></a></span>
-    </div>
+    <p><%= @movie.overview %></p>
 
+    <dl>
+        <dt>Staring</dt>
+        <dd><%= raw @movie.cast.limit(5).map { |credit| link_to credit.name, credit.movie_member }.join(", ") %></dd>
+
+        <dt>Director</dt>
+        <dd><%= raw @movie.directors.map { |credit| link_to credit.name, credit.movie_member }.join(", ") %></dd>
+
+        <dt>Genre</dt>
+        <dd><%= raw @movie.genres.map { |genre| link_to genre.name, genre }.join(", ") %></dd>
+    </dl>
 </div>

@@ -1,23 +1,13 @@
-<h1>Listing music_members</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @music_members.each do |music_member| %>
-  <tr>
-    <td><%= music_member.name %></td>
-    <td><%= link_to 'Show', music_member %></td>
-    <td><%= link_to 'Edit', edit_music_member_path(music_member) %></td>
-    <td><%= link_to 'Destroy', music_member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<h1><%= @title %></h1>
+<div class="pagination">
+    <ul>
+        <% @member_groups.each_key do |group| %>
+            <li><a href="#<%= group %>"><%= group %></a></li>
+        <% end %>
+    </ul>
+</div>
+<p></p>
+<% @member_groups.each do |group, members| %>
+    <h1><a name="<%= group %>"><%= group %></a></h1>
+    <%= render :collection => members, :partial => 'member' %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Music member', new_music_member_path %>

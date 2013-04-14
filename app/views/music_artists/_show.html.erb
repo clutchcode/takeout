@@ -11,4 +11,7 @@
 <p></p>
 <div>
     <%= link_to 'All Songs', songs_music_artist_path %>
+    <ul><% @artist.performers.each do |credit| %>
+    <li><%= link_to credit.name, credit.music_member %>
+    <% end %></ul>
 </div>

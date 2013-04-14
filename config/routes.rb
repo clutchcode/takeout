@@ -11,7 +11,14 @@ Takeout::Application.routes.draw do
     end
   end
 
-  resources :music_members
+  resources :music_members do
+    member do
+      get 'artists'
+    end
+    collection do
+      get 'performers'
+    end
+  end
 
   resources :music_credits
 

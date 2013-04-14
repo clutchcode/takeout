@@ -2,7 +2,7 @@ class MovieCollectionsController < ApplicationController
   layout 'movies'
 
   def index
-    @collections = MovieCollection.order(:name)
+    @collections = MovieCollection.order(:sort_name)
 
     respond_to do |format|
       format.html

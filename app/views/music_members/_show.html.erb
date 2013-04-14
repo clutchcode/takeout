@@ -1,0 +1,11 @@
+<h1><%= @member.name %></h1>
+<div style="float: left; padding-right: 21px; padding-bottom: 13px">
+</div>
+<div style="float: left">
+    <table class="table table-bordered">
+        <tr><th>Artist</th><th>Credit</th><th>Role</th></tr>
+        <% @member.music_credits.each do |credit| %>
+            <tr><td><%= link_to credit.music_artist.name, credit.music_artist %></td><td><%= credit.credit %></td><td><%= credit.job %></td></tr>
+        <% end %>
+    </table>
+</div>

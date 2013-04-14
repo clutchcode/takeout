@@ -1,14 +1,8 @@
-<div class="movie_credits">
-    <table>
-        <% @movie_credits.each do |movie_credit| %>
-            <tr>
-                <td><%= member_thumb(movie_credit.movie_member) %></td>
-                <td><%= movie_credit.name %></td>
-                <td><%= movie_credit.character || movie_credit.job %></td>
-            </tr>
-        <% end %>
+<h1><%= @movie.title %> <small>Credits</small></h1>
+<div>
+    <table class="table table-bordered">
+        <tr><th>Member</th><th>Role</th><th>Character</th></tr>
+        <%= render :collection => @movie_credits, :partial => 'movie_credits/credit' %>
     </table>
 </div>
-<div class="movie_backdrop">
-    <%= movie_backdrop(@movie_credits.first.movie, :width => '100%', :height => '100%') %>
-</div>
+

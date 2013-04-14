@@ -4,6 +4,7 @@ class MusicArtist < ActiveRecord::Base
   has_many :music_images, :dependent => :destroy
   has_many :music_songs, :through => :music_albums, :dependent => :destroy
   has_many :music_genres, :through => :music_albums, :uniq => true, :order => :name
+  has_many :music_credits, :dependent => :destroy
 
   scope :with_name_like, lambda { |pattern| { :conditions => ['name like ?', "%#{pattern}%"] } }
 
@@ -22,4 +23,9 @@ class MusicArtist < ActiveRecord::Base
   def self.artist_count
     MusicArtist.count
   end
+
+  def performers
+    music_credits.where(:job => 'Performer').includes(:music_member)
+  end
+
 end

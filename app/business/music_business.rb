@@ -215,8 +215,6 @@ class MusicBusiness < ApplicationBusiness
         if lastfm_images.empty?
           artist_info = artist.mbid ? lastfm.artist_info(:mbid => artist.mbid) :
               lastfm.artist_info(:artist => artist.name)
-          band_members = artist_info['artist'] ? artist_info['artist']['bandmembers'] : nil
-          p band_members
           images = artist_info['artist'] ? artist_info['artist']['image'] : nil
           if images
             artist.music_images.where(:source => 'lastfm').destroy_all
@@ -249,25 +247,49 @@ class MusicBusiness < ApplicationBusiness
           end
         end
 
-        #if album.music_credits.empty?
-        #  album_info = artist.mbid ? lastfm.album_info(:mbid => album.mbid) :
-        #      lastfm.album_info(:artist => artist.name, :album => album.name)
-        #  p album_info
-        #end
+        if artist.music_credits.empty?
+          artist_info = artist.mbid ? lastfm.artist_info(:mbid => artist.mbid) :
+              lastfm.artist_info(:artist => artist.name)
+          band_members = artist_info['artist'] ? artist_info['artist']['bandmembers'] : nil
+          p band_members
+          if band_members and band_members['member']
+            if band_members['member'].is_a? Hash
+              band_members['member'] = [ band_members['member'] ]
+            end
 
+            # remove dups
+            credits = {}
+            band_members['member'].each do |bm|
+              name = bm['name']
+              name.strip!
+              credits[name] = bm
+            end
+
+            artist.music_credits.transaction do
+              artist.music_credits.destroy_all
+              credits.each do |name, band_member|
+                credit = artist.music_credits.create(:job => 'Performer')
+                member = MusicMember.find_or_create_by_name(name)
+                member.sort_name = to_sort_name(name)
+                member.save!
+                member.music_credits << credit
+              end
+            end
+          end
+        end
 
       end
     end
   end
 end
 
-#o = MusicBusiness.new
+o = MusicBusiness.new
 #o.scan('/data/Music/Godspeed You! Black Emperor')
 #o.scan('/data/Music/Godspeed You Black Emperor!')
 #o.scan('/data/Music/Tame Impala')
-#o.scan('/data/Music/ABBA')
+#o.scan('/data/Music/Clutch')
 #o.scan('/data/Music/Mary Wells')
 #o.scan('/data/Music/Gary Numan')
-#o.scan('/data/Music')
+o.scan('/data/Music')
 
 

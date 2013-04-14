@@ -1,4 +1,4 @@
-.movie { cursor: pointer; width: 221px; height: 150px; border: 1px solid #d3d3d3; margin: 3px 3px 0px 0px; padding: 2px 2px 2px 2px; float: left }
+.movie { cursor: pointer; width: 221px; height: 150px; border: 1px solid #d3d3d3; border-radius: 5px; margin: 3px 3px 0px 0px; padding: 2px 2px 2px 2px; float: left }
 .movie-image { vertical-align: top; padding: 0px 10px 10px 0px; float: left }
 .movie-detail { vertical-align: top }
 .movie-cover { border-radius: 5px; width: 154px; height: 237px; margin-bottom: 5px; margin-right: 2px; }

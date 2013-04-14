@@ -1,5 +1,5 @@
 class MovieCollection < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :sort_name
   has_many :movies, :order => :release_date
   has_many :movie_images, :dependent => :destroy
 

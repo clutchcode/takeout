@@ -8,10 +8,6 @@ class MusicAlbum < ActiveRecord::Base
 
   scope :with_title_like, lambda { |pattern| { :conditions => ['title like ?', "%#{pattern}%"] } }
 
-  #def total_length
-  #  music_songs.sum(:length)
-  #end
-
   def track_count
     total_tracks
   end

@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130301000000) do
 
   create_table "movie_collections", :force => true do |t|
     t.string   "name"
+    t.string   "sort_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -150,11 +151,13 @@ ActiveRecord::Schema.define(:version => 20130301000000) do
     t.string   "job"
     t.integer  "music_album_id"
     t.integer  "music_member_id"
+    t.integer  "music_artist_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
 
   add_index "music_credits", ["music_album_id"], :name => "index_music_credits_on_music_album_id"
+  add_index "music_credits", ["music_artist_id"], :name => "index_music_credits_on_music_artist_id"
   add_index "music_credits", ["music_member_id"], :name => "index_music_credits_on_music_member_id"
 
   create_table "music_genres", :force => true do |t|
@@ -184,6 +187,7 @@ ActiveRecord::Schema.define(:version => 20130301000000) do
 
   create_table "music_members", :force => true do |t|
     t.string   "name"
+    t.string   "sort_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
