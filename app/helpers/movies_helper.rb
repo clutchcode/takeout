@@ -58,4 +58,8 @@ module MoviesHelper
     end
     movie_image(posters.shuffle.first, options)
   end
+
+  def genre_thumb(genre, options = {})
+    movie_image(genre.movies.shuffle.first.thumb, options)
+  end
 end

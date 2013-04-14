@@ -1,7 +1,6 @@
 <div class="movie" onclick="window.location='<%= url_for genre %>'">
     <div class="movie-image">
-        <% movie = genre.movies.first %>
-        <%= link_to movie_thumb(movie, :class => 'movie-thumb'), movie %>
+        <%= genre_thumb(genre, :class => 'movie-thumb') %>
     </div>
     <div class="movie-detail">
         <div><strong><%= link_to genre.name, genre %></strong> (<%= genre.movie_count %>)</div>
